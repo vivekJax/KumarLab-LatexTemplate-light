@@ -1,0 +1,87 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compile LaTeX (Simple)",
+            "type": "shell",
+            "command": "/Library/TeX/texbin/xelatex",
+            "args": [
+                "jackson_lab_paper.tex"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Compile LaTeX document with XeLaTeX"
+        },
+        {
+            "label": "Compile LaTeX (with Bibliography)",
+            "type": "shell",
+            "command": "./compile_with_bibtex.sh",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Complete LaTeX compilation with BibTeX"
+        },
+        {
+            "label": "Watch LaTeX (Auto-compile)",
+            "type": "shell",
+            "command": "./watch_latex.sh",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Watch for changes and auto-compile LaTeX",
+            "isBackground": true
+        },
+        {
+            "label": "Clean LaTeX Files",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-f",
+                "*.aux",
+                "*.log",
+                "*.out",
+                "*.bbl",
+                "*.blg",
+                "*.toc",
+                "*.lof",
+                "*.lot"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            },
+            "problemMatcher": [],
+            "detail": "Clean up LaTeX auxiliary files"
+        }
+    ]
+}

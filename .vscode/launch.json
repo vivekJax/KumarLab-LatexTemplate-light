@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Compile LaTeX (Simple)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/jackson_lab_paper.tex",
+            "preLaunchTask": "Compile LaTeX (Simple)",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Compile LaTeX (with Bibliography)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/jackson_lab_paper.tex",
+            "preLaunchTask": "Compile LaTeX (with Bibliography)",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Watch LaTeX (Auto-compile)",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/jackson_lab_paper.tex",
+            "preLaunchTask": "Watch LaTeX (Auto-compile)",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        }
+    ]
+}

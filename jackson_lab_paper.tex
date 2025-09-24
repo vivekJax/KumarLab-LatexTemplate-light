@@ -1,0 +1,296 @@
+% =============================================================================
+% JACKSON LABORATORY PAPER TEMPLATE - SINGLE FILE VERSION
+% =============================================================================
+% This is a complete, self-contained template for Jackson Lab papers
+% All formatting and font substitutions are included in this file
+% No external files needed except your logo and content
+% =============================================================================
+
+% =============================================================================
+% DOCUMENT SETUP
+% =============================================================================
+
+% Document class: 11pt font, single column, article format
+\documentclass[11pt,onecolumn]{article}
+
+% =============================================================================
+% PACKAGES - These add functionality to LaTeX
+% =============================================================================
+
+% Essential packages for fonts and text
+\usepackage{fontspec}           % Allows using system fonts (DIN, Whitman, etc.)
+\usepackage{amsmath,amsfonts,amssymb}  % Math symbols and equations
+\usepackage{graphicx}           % For including images (like your logo)
+\usepackage{url}                % For web links
+\usepackage{cite}               % For citations and references
+\usepackage{geometry}           % For page layout and margins
+\usepackage{booktabs}           % For professional-looking tables
+\usepackage{algorithm}          % For algorithm blocks
+\usepackage{algorithmic}        % For algorithm pseudocode
+\usepackage{hyperref}           % For clickable links
+\usepackage{fancyhdr}           % For headers and footers
+\usepackage{titlesec}           % For customizing section titles
+\usepackage{enumitem}           % For customizing lists
+\usepackage{multirow}           % For table cells that span multiple rows
+\usepackage{array}              % For advanced table formatting
+\usepackage{subcaption}         % For subfigures
+\usepackage[table]{xcolor}      % For colors and table row colors
+\usepackage{listings}           % For code blocks
+\usepackage{tcolorbox}          % For colored boxes (like the grey title box)
+\usepackage{tikz}               % For drawing graphics
+\usepackage{environ}            % For advanced environments
+\usepackage{lipsum}             % For dummy text
+\usepackage{booktabs}           % For professional-looking tables
+\usepackage{tabularray}         % For advanced table formatting
+\UseTblrLibrary{booktabs}      % For booktabs library
+\usepackage{sansmath}          % For sans-serif math
+
+
+% =============================================================================
+% PAGE SETUP
+% =============================================================================
+
+% Set page geometry: letter paper size, 1 inch margins on all sides
+\geometry{letterpaper, margin=1in}
+
+% Remove paragraph indentation (no indented first lines)
+\setlength{\parindent}{0pt}
+
+% Add 6 points of space between paragraphs
+\setlength{\parskip}{6pt}
+
+% =============================================================================
+% FONT SETUP - Smart font system with automatic fallbacks
+% =============================================================================
+
+% Check if DIN Next LT Pro font is available (Jackson Lab's preferred font)
+\IfFontExistsTF{DIN Next LT Pro}{
+    \setsansfont{DIN Next LT Pro}
+    \message{DIN Next LT Pro font found and loaded}
+}{
+    \setsansfont{Helvetica}
+    \message{DIN Next LT Pro not found, using Helvetica fallback}
+}
+
+% Check if Whitman font is available (for main text)
+\IfFontExistsTF{Whitman-RomanLF}{
+    \setmainfont{Whitman-RomanLF}
+    \message{Whitman font found and loaded}
+}{
+    \setmainfont{Times New Roman}
+    \message{Whitman not found, using Times New Roman fallback}
+}
+
+% =============================================================================
+% FONT COMMANDS - Easy-to-use font definitions with automatic fallbacks
+% =============================================================================
+
+% Smart font command: uses sans-serif font (DIN or Helvetica)
+\newcommand{\smartfont}[1]{%
+    \sffamily #1%
+}
+
+% Title font: 20pt, bold, smart font (DIN or Helvetica)
+\newcommand{\titlefont}{\fontsize{20}{24}\selectfont\bfseries\smartfont}
+
+% Author font: 10pt, bold, smart font
+\newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
+
+% Affiliation font: 10pt, regular, smart font
+\newcommand{\affiliationfont}{\fontsize{10}{12}\selectfont\smartfont}
+
+% Abstract heading font: 10pt, bold, smart font
+\newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
+
+% Abstract text font: 9pt, regular, smart font
+\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont}
+
+% Metadata labels font: 8pt, bold, smart font (for "Code:", "Date:", etc.)
+\newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\smartfont}
+
+% Metadata text font: 8pt, regular, smart font (for actual values)
+\newcommand{\metadatatextfont}{\fontsize{8}{10}\selectfont\smartfont}
+
+% Section title font: 16pt, bold, smart font
+\newcommand{\sectionfont}{\fontsize{16}{18}\selectfont\bfseries\smartfont}
+
+% Subsection title font: 14pt, bold, smart font
+\newcommand{\subsectionfont}{\fontsize{14}{16}\selectfont\bfseries\smartfont}
+
+% =============================================================================
+% GREY BOX FOR TITLE PAGE
+% =============================================================================
+
+% Create a grey box with rounded corners for the title page
+\newtcolorbox{titlebox}{
+    colback=gray!10,        % Light grey background
+    colframe=gray!10,       % Light grey border (same as background)
+    boxrule=0pt,            % No visible border
+    arc=8pt,                % Rounded corners (8 points radius)
+    left=20pt,              % Left margin inside box
+    right=20pt,             % Right margin inside box
+    top=20pt,               % Top margin inside box
+    bottom=20pt,            % Bottom margin inside box
+    width=\textwidth        % Box width matches page width
+}
+
+% =============================================================================
+% SECTION FORMATTING
+% =============================================================================
+
+% Format section titles with custom font
+\titleformat{\section}{\sectionfont}{\thesection}{1em}{}
+
+% Format subsection titles with custom font
+\titleformat{\subsection}{\subsectionfont}{\thesubsection}{1em}{}
+
+% Format subsubsection titles with custom font
+\titleformat{\subsubsection}{\small\bfseries\smartfont}{\thesubsubsection}{1em}{}
+
+% =============================================================================
+% HYPERLINK SETUP
+% =============================================================================
+
+% Configure hyperlinks to be blue and clickable
+\hypersetup{
+    colorlinks=true,        % Make links colored instead of boxed
+    linkcolor=blue,         % Internal links (like table of contents) are blue
+    urlcolor=blue,          % URLs are blue
+    citecolor=blue          % Citations are blue
+}
+
+% =============================================================================
+% BEGIN DOCUMENT
+% =============================================================================
+
+\begin{document}
+
+% =============================================================================
+% TITLE PAGE - Everything goes in the grey box
+% =============================================================================
+
+% Start the grey box that contains all the title page information
+\begin{titlebox}
+
+% Jackson Laboratory Logo
+% \vspace{-0.05in} adds a small negative space to move logo up slightly
+\vspace{-0.05in}
+% Include the JAX logo image, height set to 0.6 inches
+\includegraphics[height=0.6in]{figures/JAX logo.png}
+
+
+% Add space between logo and title
+\vspace{0.4in}
+
+% Paper Title
+% \raggedright makes the title left-aligned (not justified)
+% \titlefont applies our custom title formatting (20pt, bold, DIN font)
+{\titlefont\raggedright SimpleFold: Folding Proteins is \newline Simpler than You Think}
+
+% Add space between title and authors
+\vspace{0.2in}
+
+% Author List with Designations
+% \authorfont applies our custom author formatting (10pt, bold, DIN font)
+% Use these symbols for author designations:
+% * = Equal contribution
+% † = Correspondence
+% ‡ = Senior author
+% § = Additional designation
+{\authorfont 
+Yuyang Wang*, 
+Jiarui Lu*†, 
+Navdeep Jaitly, 
+Josh Susskind, \\ Miguel Angel Bautista‡}
+
+% Add space between authors and affiliation
+\vspace{0.1in}
+
+% Institution/Affiliation
+% \affiliationfont applies our custom affiliation formatting (10pt, regular, DIN font)
+{\affiliationfont The Jackson Laboratory \\ 600 Main Street, Bar Harbor, ME 04609, USA}
+
+% Author Designation Legend
+% Add space between affiliation and legend
+\vspace{0.1in}
+
+% Abstract Section
+% \abstractheadingfont applies our custom abstract heading formatting (10pt, bold, DIN font)
+{\abstractheadingfont Abstract}
+
+% Add space between heading and abstract text
+\vspace{0.1in}
+
+% Abstract Text
+% \abstractfont applies our custom abstract text formatting (9pt, regular, DIN font)
+{\abstractfont Protein folding is a fundamental problem in computational biology. This paper presents SimpleFold, a novel approach that simplifies the protein folding process through innovative techniques. Our method achieves state-of-the-art performance while maintaining computational efficiency. The approach combines deep learning with traditional computational methods to provide accurate protein structure predictions.}
+
+% Add space between abstract and metadata
+\vspace{0.2in}
+
+% Legend for author designations
+% \metadatalabelfont for consistent formatting with metadata
+{\metadatalabelfont *Equal contribution, †Correspondence, ‡Senior author}
+
+% Add space between legend and abstract
+% \vspace{0.1in}
+
+
+
+% Metadata Section
+% \metadatalabelfont for labels (8pt, bold, DIN font)
+% \metadatatextfont for values (8pt, regular, DIN font)
+% \href creates clickable links
+% \color{blue} makes the links blue
+{\metadatalabelfont Code:} {\metadatatextfont\href{https://github.com/apple/kumarlabjax}{https://github.com/apple/kumarlabjax}} \\
+{\metadatalabelfont Correspondence:} {\metadatatextfont{\color{blue}\href{mailto:vivek.kumar@jax.org}{vivek.kumar@jax.org}}} \\
+{\metadatalabelfont Date:} {\metadatatextfont \today}
+
+
+% End the grey box
+\end{titlebox}
+
+% Start a new page after the title page
+% \newpage
+
+% =============================================================================
+% MAIN PAPER CONTENT
+% =============================================================================
+
+% Include each section from separate files
+% This makes it easier to manage long papers and collaborate
+
+% Introduction section
+\input{01_introduction}
+
+% Methods section
+\input{02_methods}
+
+% Results section
+\input{03_results}
+
+% Discussion section
+\input{04_discussion}
+
+% Supplement section
+\input{05_supplement}
+
+% =============================================================================
+% REFERENCES SECTION
+% =============================================================================
+
+\section{References}
+
+% Bibliography will be inserted here
+% You can use \cite{key} to cite references
+% Example: \cite{jumper2021highly}
+
+% Use BibTeX to process the bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+
+% =============================================================================
+% END DOCUMENT
+% =============================================================================
+
+\end{document}
