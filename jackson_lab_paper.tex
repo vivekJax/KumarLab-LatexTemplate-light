@@ -22,6 +22,9 @@
 % Change this line to switch between fonts:
 \newcommand{\bodyfontchoice}{whitney}
 
+% Debug: Show which font is selected
+\typeout{Selected font: \bodyfontchoice}
+
 % Font configuration will be set up automatically based on your choice above
 
 % =============================================================================
@@ -87,21 +90,17 @@
 ]
 
 % Configure main serif font based on user choice
-\ifx\bodyfontchoice\undefined
-    \newcommand{\bodyfontchoice}{whitney} % Default to Whitney
-    % \newcommand{\bodyfontchoice}{whitman} % Default to Whitman
-
-\fi
+% (Font choice is set at the top of the file - line 23)
 
 % Set up Whitney font configuration
 \newcommand{\setupwhitneyfont}{%
-    \setmainfont{WhitneyHTF}[
+    \setmainfont{Whitney}[
         Path=Fonts/Whitney/,
         Extension = .otf,
-        UprightFont=WhitneyHTF-Book,
-        BoldFont=WhitneyHTF-Bold,
-        ItalicFont=WhitneyHTF-BookItalic,
-        BoldItalicFont=WhitneyHTF-BoldItalic
+        UprightFont=Whitney-Book,
+        BoldFont=Whitney-Bold,
+        ItalicFont=Whitney-BookItalic,
+        BoldItalicFont=Whitney-BoldItalic
     ]
 }
 
@@ -118,13 +117,20 @@
 }
 
 % Apply the chosen font configuration
-\ifx\bodyfontchoice whitney
-    \setupwhitneyfont
+% Use string comparison to check font choice
+\def\whitneyfont{whitney}
+\def\whitmanfont{whitman}
+\edef\currentfont{\bodyfontchoice}
+\ifx\currentfont\whitmanfont
+    \setupwhitmanfont
+    \message{Using Whitman font}
 \else
-    \ifx\bodyfontchoice whitman
-        \setupwhitmanfont
+    \ifx\currentfont\whitneyfont
+        \setupwhitneyfont
+        \message{Using Whitney font}
     \else
         \setupwhitneyfont % Default fallback
+        \message{Using Whitney font (default fallback)}
     \fi
 \fi
 
