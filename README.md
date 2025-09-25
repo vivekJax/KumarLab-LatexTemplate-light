@@ -1,8 +1,65 @@
 # Jackson Laboratory Paper Template
 
+## 🎨 **Easy Font Switching - Choose Your Style**
+
+**NEW FEATURE**: Switch between professional fonts with a single line change!
+
+### **Font Options:**
+
+| Font | Style | Best For |
+|------|-------|----------|
+| **Whitney** | Modern, clean serif | Contemporary research papers |
+| **Whitman** | Traditional, readable serif | Classic academic publications |
+
+### **Quick Font Switch:**
+
+```latex
+% In jackson_lab_paper.tex, line 23:
+\newcommand{\bodyfontchoice}{whitney}  % For Whitney font
+\newcommand{\bodyfontchoice}{whitman}  % For Whitman font
+```
+
+### **Font Examples:**
+
+**Whitney Font (Modern):**
+![Whitney Font Example](figures/font_example_whitney.png)
+
+**Whitman Font (Traditional):**
+![Whitman Font Example](figures/font_example_whitman.png)
+
+---
+
+## 🚀 **Quick Start**
+
+### **1. Choose Your Font (30 seconds)**
+```latex
+% Open jackson_lab_paper.tex and change line 23:
+\newcommand{\bodyfontchoice}{whitney}  % Modern, clean
+\newcommand{\bodyfontchoice}{whitman}  # Traditional, readable
+```
+
+### **2. Compile Your Document**
+```bash
+xelatex jackson_lab_paper.tex
+```
+
+### **3. View Your PDF**
+Open `jackson_lab_paper.pdf` to see your paper with the chosen font!
+
+---
+
 ## 📋 **What You Have**
 
 You now have a comprehensive LaTeX template system that's perfect for Jackson Laboratory papers:
+
+### **Key Features:**
+
+✨ **Easy Font Switching** - Change between Whitney and Whitman with one line  
+📝 **Professional Typography** - DIN Next LT Pro headers + your choice of serif fonts  
+🏢 **Jackson Lab Branding** - Official logo, colors, and formatting  
+📚 **Complete Bibliography** - BibTeX integration with example references  
+🖼️ **Figure Support** - TikZ, PNG, JPG, and other image formats  
+⚡ **Auto-Compilation** - Watch mode for instant PDF updates  
 
 ### **Main Files:**
 
@@ -11,7 +68,7 @@ You now have a comprehensive LaTeX template system that's perfect for Jackson La
 3. **`main3.tex`** - Original strategic document content
 4. **`references.bib`** - Bibliography file with all references
 5. **`figures/`** - Folder containing all figures and images
-6. **`Fonts/`** - **NEW**: Professional fonts (DIN Next LT Pro & Whitney)
+6. **`Fonts/`** - **NEW**: Professional fonts (DIN Next LT Pro, Whitney, & Whitman)
 7. **`watch_latex.sh`** - Auto-compile script
 8. **`compile_with_bibtex.sh`** - Complete compilation script with bibliography
 
@@ -465,7 +522,29 @@ SimpleFold & 94\% & Fast \\
 The template now uses **local font files** for consistent, professional typography:
 
 - **Sans-serif (Headers & Titles)**: DIN Next LT Pro from `./Fonts/DIN/`
-- **Serif (Main Text)**: Whitney HTF from `./Fonts/Whitney/`
+- **Serif (Main Text)**: Choose between Whitney or Whitman from `./Fonts/Whitney/` or `./Fonts/Whitman/`
+
+### **Font Switching**
+
+The template supports **easy font switching** between Whitney and Whitman for the main body text:
+
+#### **How to Switch Fonts:**
+
+1. **Open `jackson_lab_paper.tex`**
+2. **Find line 23** (around the font configuration section):
+   ```latex
+   \newcommand{\bodyfontchoice}{whitney}
+   ```
+3. **Change to your preferred font:**
+   - For **Whitney**: `\newcommand{\bodyfontchoice}{whitney}`
+   - For **Whitman**: `\newcommand{\bodyfontchoice}{whitman}`
+4. **Compile with XeLaTeX** - the font will automatically switch
+
+#### **Available Fonts:**
+
+- **Whitney**: Modern, clean serif font (default)
+- **Whitman**: Traditional, readable serif font
+- **DIN Next LT Pro**: Sans-serif for headers and titles (always used)
 
 ### **Font Benefits**
 
@@ -473,13 +552,14 @@ The template now uses **local font files** for consistent, professional typograp
 - **Professional Typography**: Uses Jackson Lab's preferred fonts for consistent branding
 - **No System Dependencies**: Doesn't rely on system fonts that may not be available
 - **Consistent Rendering**: Ensures the same appearance across all platforms
+- **Easy Switching**: Change fonts with a single line edit
 
 ### **Font Configuration**
 
 The fonts are automatically configured in the template using the `fontspec` package:
 
 ```latex
-% DIN Next LT Pro (Sans-serif)
+% DIN Next LT Pro (Sans-serif) - Always used for headers
 \setsansfont{DINNextLTPro}[
     Path=./Fonts/DIN/,
     Extension = .otf,
@@ -489,14 +569,25 @@ The fonts are automatically configured in the template using the `fontspec` pack
     BoldItalicFont=*-BoldItalic
 ]
 
-% Whitney (Serif)
-\setmainfont{WhitneyHTF}[
+% Body font is selected based on \bodyfontchoice
+% Whitney configuration:
+\setmainfont{Whitney}[
     Path=./Fonts/Whitney/,
     Extension = .otf,
-    UprightFont=*-Book,
-    BoldFont=*-Bold,
-    ItalicFont=*-BookItalic,
-    BoldItalicFont=*-BoldItalic
+    UprightFont=Whitney-Book,
+    BoldFont=Whitney-Bold,
+    ItalicFont=Whitney-BookItalic,
+    BoldItalicFont=Whitney-BoldItalic
+]
+
+% Whitman configuration:
+\setmainfont{Whitman}[
+    Path=./Fonts/Whitman/,
+    Extension = .ttf,
+    UprightFont=Whitman-RomanLF,
+    BoldFont=Whitman-BoldLF,
+    ItalicFont=Whitman-ItalicLF,
+    BoldItalicFont=Whitman-BoldLF
 ]
 ```
 
@@ -540,19 +631,26 @@ Your Folder/
 ├── 05_supplement.tex                 # Supplement section (edit this)
 ├── figures/                          # Figures folder
 │   ├── JAX logo.png                  # Your logo
-│   └── test_figure.tex               # Test figure (TikZ)
-├── Fonts/                            # NEW: Professional fonts directory
+│   ├── test_figure.tex               # Test figure (TikZ)
+│   ├── font_example_whitney.png      # Whitney font example
+│   └── font_example_whitman.png      # Whitman font example
+├── Fonts/                            # Professional fonts directory
 │   ├── README.md                     # Font documentation
-│   ├── DIN/                          # DIN Next LT Pro fonts
+│   ├── DIN/                          # DIN Next LT Pro fonts (headers)
 │   │   ├── DINNextLTPro-Regular.otf
 │   │   ├── DINNextLTPro-Bold.otf
 │   │   ├── DINNextLTPro-Italic.otf
 │   │   └── DINNextLTPro-BoldItalic.otf
-│   └── Whitney/                      # Whitney HTF fonts
-│       ├── WhitneyHTF-Book.otf
-│       ├── WhitneyHTF-Bold.otf
-│       ├── WhitneyHTF-BookItalic.otf
-│       └── WhitneyHTF-BoldItalic.otf
+│   ├── Whitney/                      # Whitney fonts (body text option)
+│   │   ├── Whitney-Book.otf
+│   │   ├── Whitney-Bold.otf
+│   │   ├── Whitney-BookItalic.otf
+│   │   └── Whitney-BoldItalic.otf
+│   └── Whitman/                      # Whitman fonts (body text option)
+│       ├── Whitman-RomanLF.ttf
+│       ├── Whitman-BoldLF.ttf
+│       ├── Whitman-ItalicLF.ttf
+│       └── Whitman-BoldLF.ttf
 ├── .vscode/                          # VS Code configuration
 │   ├── tasks.json                    # Compilation tasks
 │   ├── launch.json                   # Debug/run configurations

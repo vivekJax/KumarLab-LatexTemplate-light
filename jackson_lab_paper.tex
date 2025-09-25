@@ -20,10 +20,7 @@
 % Choose your preferred body font:
 % Options: "whitney" or "whitman"
 % Change this line to switch between fonts:
-\newcommand{\bodyfontchoice}{whitney}
-
-% Debug: Show which font is selected
-\typeout{Selected font: \bodyfontchoice}
+\newcommand{\bodyfontchoice}{whitman}
 
 % Font configuration will be set up automatically based on your choice above
 
@@ -123,14 +120,11 @@
 \edef\currentfont{\bodyfontchoice}
 \ifx\currentfont\whitmanfont
     \setupwhitmanfont
-    \message{Using Whitman font}
 \else
     \ifx\currentfont\whitneyfont
         \setupwhitneyfont
-        \message{Using Whitney font}
     \else
         \setupwhitneyfont % Default fallback
-        \message{Using Whitney font (default fallback)}
     \fi
 \fi
 
