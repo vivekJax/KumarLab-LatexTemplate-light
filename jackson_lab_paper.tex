@@ -14,6 +14,17 @@
 \documentclass[11pt,onecolumn]{article}
 
 % =============================================================================
+% FONT CONFIGURATION - Choose your body font
+% =============================================================================
+
+% Choose your preferred body font:
+% Options: "whitney" or "whitman"
+% Change this line to switch between fonts:
+\newcommand{\bodyfontchoice}{whitney}
+
+% Font configuration will be set up automatically based on your choice above
+
+% =============================================================================
 % PACKAGES - These add functionality to LaTeX
 % =============================================================================
 
@@ -60,34 +71,80 @@
 \setlength{\parskip}{6pt}
 
 % =============================================================================
-% FONT SETUP - Smart font system with automatic fallbacks
+% FONT SETUP - Using local font files from Fonts folder
 % =============================================================================
+% Note: Body font is configured at the top of this file (line 23)
+% Change \bodyfontchoice to "whitney" or "whitman" to switch fonts
 
-% Check if DIN Next LT Pro font is available (Jackson Lab's preferred font)
-\IfFontExistsTF{DIN Next LT Pro}{
-    \setsansfont{DIN Next LT Pro}
-    \message{DIN Next LT Pro font found and loaded}
-}{
-    \setsansfont{Helvetica}
-    \message{DIN Next LT Pro not found, using Helvetica fallback}
+% Configure DIN Next LT Pro as sans-serif font (Jackson Lab's preferred font)
+\setsansfont{DINNextLTPro}[
+    Path=Fonts/DIN/,
+    Extension = .otf,
+    UprightFont=DINNextLTPro-Regular,
+    BoldFont=DINNextLTPro-Bold,
+    ItalicFont=DINNextLTPro-Italic,
+    BoldItalicFont=DINNextLTPro-BoldItalic
+]
+
+% Configure main serif font based on user choice
+\ifx\bodyfontchoice\undefined
+    \newcommand{\bodyfontchoice}{whitney} % Default to Whitney
+    % \newcommand{\bodyfontchoice}{whitman} % Default to Whitman
+
+\fi
+
+% Set up Whitney font configuration
+\newcommand{\setupwhitneyfont}{%
+    \setmainfont{WhitneyHTF}[
+        Path=Fonts/Whitney/,
+        Extension = .otf,
+        UprightFont=WhitneyHTF-Book,
+        BoldFont=WhitneyHTF-Bold,
+        ItalicFont=WhitneyHTF-BookItalic,
+        BoldItalicFont=WhitneyHTF-BoldItalic
+    ]
 }
 
-% Check if Whitman font is available (for main text)
-\IfFontExistsTF{Whitman-RomanLF}{
-    \setmainfont{Whitman-RomanLF}
-    \message{Whitman font found and loaded}
-}{
-    \setmainfont{Times New Roman}
-    \message{Whitman not found, using Times New Roman fallback}
+% Set up Whitman font configuration
+\newcommand{\setupwhitmanfont}{%
+    \setmainfont{Whitman}[
+        Path=Fonts/Whitman/,
+        Extension = .ttf,
+        UprightFont=Whitman-RomanLF,
+        BoldFont=Whitman-BoldLF,
+        ItalicFont=Whitman-ItalicLF,
+        BoldItalicFont=Whitman-BoldLF
+    ]
 }
+
+% Apply the chosen font configuration
+\ifx\bodyfontchoice whitney
+    \setupwhitneyfont
+\else
+    \ifx\bodyfontchoice whitman
+        \setupwhitmanfont
+    \else
+        \setupwhitneyfont % Default fallback
+    \fi
+\fi
 
 % =============================================================================
 % FONT COMMANDS - Easy-to-use font definitions with automatic fallbacks
 % =============================================================================
 
-% Smart font command: uses sans-serif font (DIN or Helvetica)
+% Smart font command: uses sans-serif font (DIN or Helvetica) for headers
 \newcommand{\smartfont}[1]{%
     \sffamily #1%
+}
+
+% Body text font command: uses serif font (Whitney or Times New Roman)
+\newcommand{\bodyfont}[1]{%
+    \rmfamily #1%
+}
+
+% Ensure document body uses serif font by default
+\AtBeginDocument{%
+    \rmfamily
 }
 
 % Title font: 20pt, bold, smart font (DIN or Helvetica)

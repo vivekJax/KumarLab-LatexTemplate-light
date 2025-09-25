@@ -2,15 +2,18 @@
 
 ## 📋 **What You Have**
 
-You now have a modular LaTeX template system that's perfect for long papers:
+You now have a comprehensive LaTeX template system that's perfect for Jackson Laboratory papers:
 
 ### **Main Files:**
 
-1. **`jackson_lab_paper.tex`** - Main template file (includes all sections)
-2. **`references.bib`** - Bibliography file with all references
-3. **`figures/`** - Folder containing all figures and images
-4. **`watch_latex.sh`** - Auto-compile script
-5. **`compile_with_bibtex.sh`** - Complete compilation script with bibliography
+1. **`main_jax.tex`** - **NEW**: Merged strategic document with Jackson Lab formatting
+2. **`jackson_lab_paper.tex`** - Original modular template file (includes all sections)
+3. **`main3.tex`** - Original strategic document content
+4. **`references.bib`** - Bibliography file with all references
+5. **`figures/`** - Folder containing all figures and images
+6. **`Fonts/`** - **NEW**: Professional fonts (DIN Next LT Pro & Whitney)
+7. **`watch_latex.sh`** - Auto-compile script
+8. **`compile_with_bibtex.sh`** - Complete compilation script with bibliography
 
 ### **Section Files (Edit These for Content):**
 
@@ -22,21 +25,43 @@ You now have a modular LaTeX template system that's perfect for long papers:
 
 ## 🎯 **How to Use This Template**
 
+### **Option 1: Use the Merged Strategic Document (Recommended)**
+
+**For the Kumar Lab Strategic Document:**
+
+1. **Use `main_jax.tex`** - This is the merged strategic document with Jackson Lab formatting
+2. **Edit content directly** in the main file (all content is preserved from `main3.tex`)
+3. **Compile with XeLaTeX** to use the professional fonts
+
+### **Option 2: Use the Modular Template**
+
+**For general Jackson Lab papers:**
+
+1. **Use `jackson_lab_paper.tex`** - This is the modular template
+2. **Edit individual section files** for content
+3. **Edit the main file** for title page and formatting
+
 ### **Step 1: VS Code Setup (Recommended)**
 
 1. **Open the folder** in VS Code/Cursor
 2. **Install LaTeX Workshop extension** (optional but recommended)
 3. **Use the play button (F5)** to compile your document
 
-### **Step 2: Edit Your Paper Sections**
+### **Step 2: Choose Your Template**
 
-Edit the individual section files:
+#### **For Strategic Documents:**
+- **Use `main_jax.tex`** - Complete strategic document with Jackson Lab formatting
+- **All content preserved** from the original strategic document
+- **Professional fonts** configured automatically
 
-- **`01_introduction.tex`** - Add your introduction content
-- **`02_methods.tex`** - Add your methods content
-- **`03_results.tex`** - Add your results content
-- **`04_discussion.tex`** - Add your discussion content
-- **`05_supplement.tex`** - Add your supplementary content
+#### **For Research Papers:**
+- **Use `jackson_lab_paper.tex`** - Modular template for research papers
+- **Edit section files** for content:
+  - **`01_introduction.tex`** - Add your introduction content
+  - **`02_methods.tex`** - Add your methods content
+  - **`03_results.tex`** - Add your results content
+  - **`04_discussion.tex`** - Add your discussion content
+  - **`05_supplement.tex`** - Add your supplementary content
 
 ### **Step 3: Edit Title Page (Optional)**
 
@@ -435,12 +460,51 @@ SimpleFold & 94\% & Fast \\
 
 ## 🎨 **Font System**
 
-The template uses a smart font system:
+### **Professional Font Configuration**
 
-- **Headers & Titles**: DIN Next LT Pro (Jackson Lab's font) → Helvetica (fallback)
-- **Main Text**: Whitman (elegant serif) → Times New Roman (fallback)
+The template now uses **local font files** for consistent, professional typography:
 
-This means your paper will look great whether someone has the custom fonts installed or not.
+- **Sans-serif (Headers & Titles)**: DIN Next LT Pro from `./Fonts/DIN/`
+- **Serif (Main Text)**: Whitney HTF from `./Fonts/Whitney/`
+
+### **Font Benefits**
+
+- **Environment Independent**: Works on Overleaf, local LaTeX, and any XeLaTeX environment
+- **Professional Typography**: Uses Jackson Lab's preferred fonts for consistent branding
+- **No System Dependencies**: Doesn't rely on system fonts that may not be available
+- **Consistent Rendering**: Ensures the same appearance across all platforms
+
+### **Font Configuration**
+
+The fonts are automatically configured in the template using the `fontspec` package:
+
+```latex
+% DIN Next LT Pro (Sans-serif)
+\setsansfont{DINNextLTPro}[
+    Path=./Fonts/DIN/,
+    Extension = .otf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+]
+
+% Whitney (Serif)
+\setmainfont{WhitneyHTF}[
+    Path=./Fonts/Whitney/,
+    Extension = .otf,
+    UprightFont=*-Book,
+    BoldFont=*-Bold,
+    ItalicFont=*-BookItalic,
+    BoldItalicFont=*-BoldItalic
+]
+```
+
+### **Font Requirements**
+
+- **Compiler**: Must use XeLaTeX (not pdfLaTeX)
+- **Font Files**: Must be uploaded to your LaTeX project
+- **Path Configuration**: Fonts are configured with relative paths to the `Fonts/` folder
 
 ## ❓ **Troubleshooting**
 
@@ -465,7 +529,9 @@ This means your paper will look great whether someone has the custom fonts insta
 
 ```
 Your Folder/
-├── jackson_lab_paper.tex             # Main template file (includes all sections)
+├── main_jax.tex                      # NEW: Merged strategic document with Jackson Lab formatting
+├── jackson_lab_paper.tex             # Original modular template file (includes all sections)
+├── main3.tex                         # Original strategic document content
 ├── references.bib                    # Bibliography file (edit this)
 ├── 01_introduction.tex               # Introduction section (edit this)
 ├── 02_methods.tex                    # Methods section (edit this)
@@ -475,6 +541,18 @@ Your Folder/
 ├── figures/                          # Figures folder
 │   ├── JAX logo.png                  # Your logo
 │   └── test_figure.tex               # Test figure (TikZ)
+├── Fonts/                            # NEW: Professional fonts directory
+│   ├── README.md                     # Font documentation
+│   ├── DIN/                          # DIN Next LT Pro fonts
+│   │   ├── DINNextLTPro-Regular.otf
+│   │   ├── DINNextLTPro-Bold.otf
+│   │   ├── DINNextLTPro-Italic.otf
+│   │   └── DINNextLTPro-BoldItalic.otf
+│   └── Whitney/                      # Whitney HTF fonts
+│       ├── WhitneyHTF-Book.otf
+│       ├── WhitneyHTF-Bold.otf
+│       ├── WhitneyHTF-BookItalic.otf
+│       └── WhitneyHTF-BoldItalic.otf
 ├── .vscode/                          # VS Code configuration
 │   ├── tasks.json                    # Compilation tasks
 │   ├── launch.json                   # Debug/run configurations
@@ -486,8 +564,42 @@ Your Folder/
 └── compile_simple.sh                 # Simple compilation script
 ```
 
+## 📄 **About the Merged Document (main_jax.tex)**
+
+### **What is main_jax.tex?**
+
+`main_jax.tex` is a **complete, self-contained document** that merges:
+- **All content** from the original strategic document (`main3.tex`)
+- **Professional Jackson Lab formatting** and typography
+- **Local font configuration** for consistent rendering across environments
+
+### **Key Features:**
+
+- **Complete Strategic Content**: All valuable information from the original document is preserved
+- **Professional Formatting**: Jackson Lab title page, fonts, and styling
+- **Environment Independent**: Works on Overleaf, local LaTeX, and any XeLaTeX environment
+- **Self-Contained**: No external dependencies except the font files
+- **Ready to Compile**: Just run XeLaTeX on the file
+
+### **Content Preserved:**
+
+- Strategic imperative for Kumar Lab integration
+- 24-hour classifier development cycle proposal
+- mHydraNet improvement strategies
+- Behavioral indices development
+- Technical debt analysis
+- Platform ecosystem vision
+- All detailed technical discussions and proposals
+
 ## 🎯 **Best Practices**
 
+### **For Strategic Documents (main_jax.tex):**
+1. **Edit content directly** in the main file
+2. **Use XeLaTeX compiler** for font support
+3. **Keep font files** in the `Fonts/` folder
+4. **Test compilation** after major changes
+
+### **For Research Papers (jackson_lab_paper.tex):**
 1. **Modular structure** - each section in its own file for easy management
 2. **Edit content in section files** (01_introduction.tex, 02_methods.tex, etc.)
 3. **Edit formatting in main file** (jackson_lab_paper.tex)
