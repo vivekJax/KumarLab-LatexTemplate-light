@@ -40,6 +40,10 @@
 
 ### **2. Compile Your Document**
 ```bash
+# Quick compilation (recommended for most users)
+./scripts/compile_simple.sh
+
+# Or use the traditional method
 xelatex jackson_lab_paper.tex
 ```
 
@@ -60,6 +64,7 @@ You now have a comprehensive LaTeX template system that's perfect for Jackson La
 📚 **Complete Bibliography** - BibTeX integration with example references  
 🖼️ **Figure Support** - TikZ, PNG, JPG, and other image formats  
 ⚡ **Auto-Compilation** - Watch mode for instant PDF updates  
+📜 **Organized Scripts** - Easy-to-use compilation tools with detailed documentation  
 
 ### **Main Files:**
 
@@ -69,8 +74,7 @@ You now have a comprehensive LaTeX template system that's perfect for Jackson La
 4. **`references.bib`** - Bibliography file with all references
 5. **`figures/`** - Folder containing all figures and images
 6. **`Fonts/`** - **NEW**: Professional fonts (DIN Next LT Pro, Whitney, & Whitman)
-7. **`watch_latex.sh`** - Auto-compile script
-8. **`compile_with_bibtex.sh`** - Complete compilation script with bibliography
+7. **`scripts/`** - **NEW**: Organized compilation scripts with detailed documentation
 
 ### **Section Files (Edit These for Content):**
 
@@ -651,15 +655,17 @@ Your Folder/
 │       ├── Whitman-BoldLF.ttf
 │       ├── Whitman-ItalicLF.ttf
 │       └── Whitman-BoldLF.ttf
+├── scripts/                          # **NEW**: Organized compilation scripts
+│   ├── README.md                     # Detailed script documentation
+│   ├── compile_simple.sh             # Quick compilation
+│   ├── compile_with_bibtex.sh        # Full compilation with bibliography
+│   └── watch_latex.sh                # Auto-compile on file changes
 ├── .vscode/                          # VS Code configuration
 │   ├── tasks.json                    # Compilation tasks
 │   ├── launch.json                   # Debug/run configurations
 │   └── settings.json                 # LaTeX settings
 ├── jackson_lab_paper.pdf             # Generated PDF
-├── README.md                         # This user guide
-├── watch_latex.sh                    # Auto-compile script
-├── compile_with_bibtex.sh            # Complete compilation script
-└── compile_simple.sh                 # Simple compilation script
+└── README.md                         # This user guide
 ```
 
 ## 📄 **About the Merged Document (main_jax.tex)**
