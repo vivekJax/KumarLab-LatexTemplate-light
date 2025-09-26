@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Auto-compile LaTeX when file changes
-echo "Watching jackson_lab_paper.tex for changes..."
+echo "Watching jax_main.tex for changes..."
 echo "Press Ctrl+C to stop"
 echo ""
 
-ls jackson_lab_paper.tex | entr -r /Library/TeX/texbin/xelatex jackson_lab_paper.tex
+ls jax_main.tex | entr -r /Library/TeX/texbin/xelatex jax_main.tex

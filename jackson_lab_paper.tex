@@ -1,9 +1,22 @@
 % =============================================================================
 % JACKSON LABORATORY PAPER TEMPLATE - SINGLE FILE VERSION
 % =============================================================================
+% 
+% Copyright (c) 2025 The Jackson Laboratory. All rights reserved.
+% PROPRIETARY SOFTWARE - JACKSON LABORATORY USE ONLY
+% 
+% Created by: Kumar Lab, The Jackson Laboratory
+% GitHub: https://github.com/kumarlabjax/LaTeX-Template
+% 
+% Licensed under:
+% - Proprietary License (see LICENSE)
+% - Creative Commons BY-NC-ND 4.0 (see LICENSE_CC.md)
+% 
 % This is a complete, self-contained template for Jackson Lab papers
 % All formatting and font substitutions are included in this file
 % No external files needed except your logo and content
+% 
+% UNAUTHORIZED USE IS PROHIBITED
 % =============================================================================
 
 % =============================================================================
@@ -11,6 +24,7 @@
 % =============================================================================
 
 % Document class: 11pt font, single column, article format
+% CHANGES: 10pt=smaller text, 12pt=larger text, twocolumn=two-column layout
 \documentclass[11pt,onecolumn]{article}
 
 % =============================================================================
@@ -20,6 +34,7 @@
 % Choose your preferred body font:
 % Options: "whitney" or "whitman"
 % Change this line to switch between fonts:
+% CHANGES: whitney=modern serif, whitman=traditional serif
 \newcommand{\bodyfontchoice}{whitney}
 
 % Font configuration will be set up automatically based on your choice above
@@ -30,10 +45,14 @@
 
 % Essential packages for fonts and text
 \usepackage{fontspec}           % Allows using system fonts (DIN, Whitman, etc.)
+% CHANGES: Required for custom fonts, without it only default fonts work
 \usepackage{amsmath,amsfonts,amssymb}  % Math symbols and equations
+% CHANGES: Required for complex math, without it equations break
 \usepackage{graphicx}           % For including images (like your logo)
+% CHANGES: Required for \includegraphics, without it images fail
 \usepackage{url}                % For web links
 \usepackage{cite}               % For citations and references
+% CHANGES: Required for \cite{} commands, without it citations show as [?]
 \usepackage{geometry}           % For page layout and margins
 \usepackage{booktabs}           % For professional-looking tables
 \usepackage{algorithm}          % For algorithm blocks
@@ -62,12 +81,15 @@
 % =============================================================================
 
 % Set page geometry: letter paper size, 1 inch margins on all sides
+% CHANGES: a4paper=European size, margin=0.5in=narrower, margin=1.5in=wider
 \geometry{letterpaper, margin=1in}
 
 % Remove paragraph indentation (no indented first lines)
+% CHANGES: 15pt=traditional indentation, 0pt=modern no-indent style
 \setlength{\parindent}{0pt}
 
 % Add 6 points of space between paragraphs
+% CHANGES: 0pt=no space, 12pt=more space between paragraphs
 \setlength{\parskip}{6pt}
 
 % =============================================================================
@@ -148,7 +170,15 @@
 }
 
 % Title font: 20pt, bold, smart font (DIN or Helvetica)
-\newcommand{\titlefont}{\fontsize{20}{24}\selectfont\bfseries\smartfont}
+% CHANGES: \fontsize{18}{24}=smaller title, \fontsize{22}{30}=larger title
+% CHANGES: 28=line spacing, 24=tighter, 32=looser spacing
+\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
+
+% Title command with proper line spacing
+% CHANGES: \\[0.05in]=less space between lines, \\[0.2in]=more space
+\newcommand{\titletext}[2]{%
+    {\titlefont\raggedright #1 \\[0.1in] #2}%
+}
 
 % Author font: 10pt, bold, smart font
 \newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
@@ -160,7 +190,9 @@
 \newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
 
 % Abstract text font: 9pt, regular, smart font
-\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont}
+% CHANGES: \fontsize{8}{10}=smaller abstract, \fontsize{10}{12}=larger abstract
+% CHANGES: \linespread{1.0}=tighter spacing, \linespread{1.5}=looser spacing
+\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont\linespread{1.22}\selectfont}
 
 % Metadata labels font: 8pt, bold, smart font (for "Code:", "Date:", etc.)
 \newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\smartfont}
@@ -179,6 +211,9 @@
 % =============================================================================
 
 % Create a grey box with rounded corners for the title page
+% CHANGES: colback=white=no background, colback=blue!10=light blue
+% CHANGES: arc=0pt=square corners, arc=15pt=more rounded
+% CHANGES: left=10pt=less margin, left=30pt=more margin
 \newtcolorbox{titlebox}{
     colback=gray!10,        % Light grey background
     colframe=gray!10,       % Light grey border (same as background)
@@ -233,16 +268,17 @@
 % \vspace{-0.05in} adds a small negative space to move logo up slightly
 \vspace{-0.05in}
 % Include the JAX logo image, height set to 0.6 inches
+% CHANGES: height=0.4in=smaller logo, height=0.8in=larger logo
 \includegraphics[height=0.6in]{figures/JAX logo.png}
 
 
 % Add space between logo and title
-\vspace{0.4in}
+\vspace{0.2in}
 
 % Paper Title
-% \raggedright makes the title left-aligned (not justified)
-% \titlefont applies our custom title formatting (20pt, bold, DIN font)
-{\titlefont\raggedright JAX \LaTeX: Isn't It Nice To Have \newline Something Like This?}
+% \titletext command handles proper line spacing automatically
+% CHANGES: Change text to your actual title, use {} for single line
+\titletext{JAX \textbf{LaTeX}: Isn't It Nice To Have}{Something Like This?}
 
 % Add space between title and authors
 \vspace{0.2in}
@@ -254,6 +290,7 @@
 % † = Correspondence
 % ‡ = Senior author
 % § = Additional designation
+% CHANGES: Replace with your actual author names and designations
 {\authorfont 
 John Snell*, 
 Douglass Coleman*†, 
@@ -265,6 +302,7 @@ Jane Austin, \\ Roscoe Jackson‡}
 
 % Institution/Affiliation
 % \affiliationfont applies our custom affiliation formatting (10pt, regular, DIN font)
+% CHANGES: Replace with your actual institution and address
 {\affiliationfont The Jackson Laboratory \\ 600 Main Street, Bar Harbor, ME 04609, USA}
 
 % Author Designation Legend
@@ -280,6 +318,7 @@ Jane Austin, \\ Roscoe Jackson‡}
 
 % Abstract Text
 % \abstractfont applies our custom abstract text formatting (9pt, regular, DIN font)
+% CHANGES: Replace \lipsum[1] with your actual abstract text
 {\abstractfont \lipsum [1]}
 
 % Add space between abstract and metadata
@@ -343,7 +382,9 @@ Jane Austin, \\ Roscoe Jackson‡}
 % Example: \cite{jumper2021highly}
 
 % Use BibTeX to process the bibliography
+% CHANGES: plainnat=different style, alpha=alphabetical, unsrt=unsorted
 \bibliographystyle{plain}
+% CHANGES: Change filename to your references file
 \bibliography{references}
 
 % =============================================================================

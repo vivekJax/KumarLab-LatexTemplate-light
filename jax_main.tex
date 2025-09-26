@@ -1,0 +1,164 @@
+% =============================================================================
+% JACKSON LABORATORY PAPER TEMPLATE - CLEAN VERSION
+% =============================================================================
+% 
+% Copyright (c) 2025 The Jackson Laboratory. All rights reserved.
+% PROPRIETARY SOFTWARE - JACKSON LABORATORY USE ONLY
+% 
+% Created by: Kumar Lab, The Jackson Laboratory
+% GitHub: https://github.com/kumarlabjax/LaTeX-Template
+% 
+% Licensed under:
+% - Proprietary License (see LICENSE)
+% - Creative Commons BY-NC-ND 4.0 (see LICENSE_CC.md)
+% 
+% This is a clean, user-friendly template for The Jackson Laboratory papers.
+% All formatting is handled by the jacksonlab.sty package.
+% Users only need to focus on content!
+% 
+% UNAUTHORIZED USE IS PROHIBITED
+%
+% =============================================================================
+% DOCUMENT SETUP
+% =============================================================================
+
+% Document class: 11pt font, single column, article format
+\documentclass[11pt,onecolumn]{article}
+
+% =============================================================================
+% STYLE PACKAGE
+% =============================================================================
+
+% Load Jackson Lab formatting package
+% Options: whitney (modern) or whitman (traditional)
+\usepackage[whitney]{jacksonlab}
+
+% =============================================================================
+% BEGIN DOCUMENT
+% =============================================================================
+
+\begin{document}
+
+% =============================================================================
+% TITLE PAGE - Everything goes in the grey box
+% =============================================================================
+
+% Start the grey box that contains all the title page information
+\begin{titlebox}
+
+% Jackson Laboratory Logo
+\vspace{-0.05in}
+\includegraphics[height=0.6in]{figures/JAX logo.png}
+
+% Add space between logo and title
+\vspace{0.2in}
+
+% Paper Title
+% \titletext command handles proper line spacing automatically
+\titletext{JAX \textbf{LaTeX}: Isn't It Nice To Have}{Something Like This?}
+
+% Add space between title and authors
+\vspace{0.2in}
+
+% Author List with Designations
+% Use these symbols for author designations:
+%   * = Equal contribution
+%   † = Correspondence  
+%   ‡ = Senior author
+%   § = Additional designation
+% 
+% CHANGES: Replace with your actual author names and designations
+{\authorfont 
+John Snell*, 
+Douglass Coleman*†, 
+Muerial Davisson, 
+Jane Austin, \\ Roscoe Jackson‡}
+
+% Add space between authors and affiliation
+\vspace{0.1in}
+
+% Institution/Affiliation
+% \affiliationfont applies our custom affiliation formatting (10pt, regular, DIN font)
+% 
+% CHANGES: Replace with your actual institution and address
+{\affiliationfont The Jackson Laboratory \\ 600 Main Street, Bar Harbor, ME 04609, USA}
+
+% Author Designation Legend
+\vspace{0.1in}
+
+% Abstract Section
+{\abstractheadingfont Abstract}
+
+% Add space between heading and abstract text
+\vspace{0.1in}
+
+% Abstract Text
+% \abstractfont applies our custom abstract text formatting (9pt, regular, DIN font)
+% 
+% CHANGES: Replace \lipsum[1] with your actual abstract text
+{\abstractfont \lipsum [1]}
+
+% Add space between abstract and metadata
+\vspace{0.2in}
+
+% Legend for author designations
+{\metadatalabelfont *Equal contribution, †Correspondence, ‡Senior author}
+
+% Metadata Section
+{\metadatalabelfont Code:} {\metadatatextfont\href{https://github.com/apple/kumarlabjax}{https://github.com/apple/kumarlabjax}} \\
+{\metadatalabelfont Correspondence:} {\metadatatextfont{\color{blue}\href{mailto:vivek.kumar@jax.org}{vivek.kumar@jax.org}}} \\
+{\metadatalabelfont Date:} {\metadatatextfont \today}
+
+% End the grey box
+\end{titlebox}
+
+% =============================================================================
+% MAIN PAPER CONTENT
+% =============================================================================
+
+% Include each section from separate files
+% This makes it easier to manage long papers and collaborate
+% 
+% EDIT THESE FILES:
+%   - 01_introduction.tex    (Introduction section)
+%   - 02_methods.tex         (Methods section)  
+%   - 03_results.tex          (Results section)
+%   - 04_discussion.tex       (Discussion section)
+%   - 05_supplement.tex       (Supplement section)
+
+% Introduction section
+\input{01_introduction}
+
+% Methods section
+\input{02_methods}
+
+% Results section
+\input{03_results}
+
+% Discussion section
+\input{04_discussion}
+
+% Supplement section
+\input{05_supplement}
+
+% =============================================================================
+% REFERENCES SECTION
+% =============================================================================
+
+\section{References}
+
+% Bibliography will be inserted here
+% You can use \cite{key} to cite references
+% Example: \cite{jumper2021highly}
+% 
+% EDIT: Add your references to references.bib file
+
+% Use BibTeX to process the bibliography
+\bibliographystyle{plain}
+\bibliography{references}
+
+% =============================================================================
+% END DOCUMENT
+% =============================================================================
+
+\end{document}

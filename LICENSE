@@ -1,21 +1,81 @@
-MIT License
+# Jackson Laboratory LaTeX Template License
 
-Copyright (c) 2025 Vivek
+## DUAL LICENSE SYSTEM
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+**Copyright (c) 2025 The Jackson Laboratory. All rights reserved.**
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+**Created by: Kumar Lab, The Jackson Laboratory**  
+**GitHub: https://github.com/kumarlabjax/LaTeX-Template**
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+### **LICENSE OPTIONS:**
+
+1. **Proprietary License** (Default) - See terms below
+2. **Creative Commons License** - See `LICENSE_CC.md` for CC BY-NC-ND 4.0 terms
+
+**Both licenses apply simultaneously, with the more restrictive terms taking precedence.**
+
+### **QUICK REFERENCE FOR JACKSON LABORATORY PERSONNEL:**
+
+| User Type | Can Use? | Restrictions |
+|-----------|----------|--------------|
+| **JAX Employees** | ✅ Yes | None - Full access |
+| **JAX Students** | ✅ Yes | None - Full access |
+| **JAX Affiliates** | ✅ Yes | None - Full access |
+| **JAX Collaborators** | ✅ Yes | Written permission needed |
+| **External Organizations** | ❌ No | Completely prohibited |
+| **Commercial Use Outside JAX** | ❌ No | Completely prohibited |
+
+**This license protects Jackson Laboratory's intellectual property while allowing full internal use by all JAX personnel.**
+
+### **RESTRICTED USE LICENSE**
+
+This LaTeX template and associated files (the "Template") are proprietary to The Jackson Laboratory and are provided under the following terms:
+
+### **PERMITTED USE:**
+- ✅ **Jackson Laboratory employees, students, and affiliates** may use this template
+- ✅ **Jackson Laboratory collaborators** may use this template with written permission
+- ✅ **Internal Jackson Laboratory projects** may use this template
+- ✅ **Modification for Jackson Laboratory use** is permitted
+
+**IMPORTANT: This license does NOT restrict Jackson Laboratory colleagues from using this template. All JAX personnel have full access and can use, modify, and share this template internally without any restrictions.**
+
+### **PROHIBITED USE:**
+- ❌ **External organizations** may NOT use this template
+- ❌ **Commercial use outside Jackson Laboratory** is prohibited
+- ❌ **Distribution to non-Jackson Laboratory entities** is prohibited
+- ❌ **Public repositories** may NOT include this template
+- ❌ **Sharing with external collaborators** without permission is prohibited
+
+### **TERMS:**
+1. **Scope**: This license applies to all files in this template, including:
+   - LaTeX source files (.tex)
+   - Style packages (.sty)
+   - Font configurations
+   - Documentation files
+   - Scripts and utilities
+
+2. **Attribution**: All documents created with this template must include:
+   - "Created using Jackson Laboratory LaTeX Template"
+   - Jackson Laboratory branding and logos
+
+3. **Modifications**: Any modifications must:
+   - Remain proprietary to Jackson Laboratory
+   - Not be distributed externally
+   - Maintain Jackson Laboratory branding
+
+4. **Enforcement**: Violation of these terms may result in:
+   - Legal action
+   - Cease and desist orders
+   - Damages for unauthorized use
+
+### **CONTACT:**
+For questions about this license or to request permission for external use:
+- **Email**: legal@jax.org
+- **Address**: The Jackson Laboratory, 600 Main Street, Bar Harbor, ME 04609
+
+### **DISCLAIMER:**
+This template is provided "AS IS" without warranty. The Jackson Laboratory disclaims all liability for any damages arising from the use of this template.
+
+---
+
+**This is a proprietary license. Unauthorized use is prohibited.**

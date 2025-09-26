@@ -1,0 +1,247 @@
+% =============================================================================
+% JACKSON LABORATORY STYLE FILE
+% =============================================================================
+% 
+% Copyright (c) 2025 The Jackson Laboratory. All rights reserved.
+% PROPRIETARY SOFTWARE - JACKSON LABORATORY USE ONLY
+% 
+% Created by: Kumar Lab, The Jackson Laboratory
+% GitHub: https://github.com/kumarlabjax/LaTeX-Template
+% 
+% Licensed under:
+% - Proprietary License (see LICENSE)
+% - Creative Commons BY-NC-ND 4.0 (see LICENSE_CC.md)
+% 
+% Professional formatting package for Jackson Lab papers
+% Usage: \usepackage{jacksonlab}
+% 
+% This package provides:
+%   - Professional font configurations (Whitney/Whitman)
+%   - Custom title page formatting
+%   - Section and subsection styling
+%   - Bibliography formatting
+%   - Hyperlink configuration
+% 
+% UNAUTHORIZED USE IS PROHIBITED
+% 
+% =============================================================================
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{jacksonlab}[2024/12/19 Jackson Laboratory Paper Style]
+
+% =============================================================================
+% PACKAGE OPTIONS
+% =============================================================================
+
+% Font choice option
+\DeclareOption{whitney}{\newcommand{\bodyfontchoice}{whitney}}
+\DeclareOption{whitman}{\newcommand{\bodyfontchoice}{whitman}}
+\DeclareOption{whitney}{\newcommand{\bodyfontchoice}{whitney}}
+
+% Page layout options
+\DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
+\DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
+
+% Font size options
+\DeclareOption{10pt}{\PassOptionsToClass{10pt}{article}}
+\DeclareOption{11pt}{\PassOptionsToClass{11pt}{article}}
+\DeclareOption{12pt}{\PassOptionsToClass{12pt}{article}}
+
+% Process options
+\ProcessOptions\relax
+
+% =============================================================================
+% REQUIRED PACKAGES
+% =============================================================================
+
+% Essential packages for fonts and text
+\RequirePackage{fontspec}           % Custom fonts
+\RequirePackage{amsmath,amsfonts,amssymb}  % Math symbols
+\RequirePackage{graphicx}           % Images
+\RequirePackage{url}                 % Web links
+\RequirePackage{cite}               % Citations
+\RequirePackage{geometry}           % Page layout
+\RequirePackage{booktabs}            % Professional tables
+\RequirePackage{algorithm}           % Algorithm blocks
+\RequirePackage{algorithmic}         % Algorithm pseudocode
+\RequirePackage{hyperref}            % Clickable links
+\RequirePackage{fancyhdr}            % Headers and footers
+\RequirePackage{titlesec}            % Section titles
+\RequirePackage{enumitem}            % Lists
+\RequirePackage{multirow}            % Table cells
+\RequirePackage{array}               % Table formatting
+\RequirePackage{subcaption}          % Subfigures
+\RequirePackage[table]{xcolor}       % Colors
+\RequirePackage{listings}            % Code blocks
+\RequirePackage{tcolorbox}           % Colored boxes
+\RequirePackage{tikz}                % Graphics
+\RequirePackage{environ}             % Advanced environments
+\RequirePackage{lipsum}              % Dummy text
+\RequirePackage{tabularray}          % Advanced tables
+\UseTblrLibrary{booktabs}           % Booktabs library
+\RequirePackage{sansmath}            % Sans-serif math
+
+% =============================================================================
+% PAGE SETUP
+% =============================================================================
+
+% Set page geometry: letter paper size, 1 inch margins on all sides
+\geometry{letterpaper, margin=1in}
+
+% Remove paragraph indentation (no indented first lines)
+\setlength{\parindent}{0pt}
+
+% Add 6 points of space between paragraphs
+\setlength{\parskip}{6pt}
+
+% =============================================================================
+% FONT SETUP
+% =============================================================================
+
+% Configure DIN Next LT Pro as sans-serif font (Jackson Lab's preferred font)
+% This font is used for headers, titles, and UI elements
+\setsansfont{DINNextLTPro}[
+    Path=Fonts/DIN/,
+    Extension = .otf,
+    UprightFont=DINNextLTPro-Regular,
+    BoldFont=DINNextLTPro-Bold,
+    ItalicFont=DINNextLTPro-Italic,
+    BoldItalicFont=DINNextLTPro-BoldItalic
+]
+
+% Set up Whitney font configuration
+\newcommand{\setupwhitneyfont}{%
+    \setmainfont{Whitney}[
+        Path=Fonts/Whitney/,
+        Extension = .otf,
+        UprightFont=Whitney-Book,
+        BoldFont=Whitney-Bold,
+        ItalicFont=Whitney-BookItalic,
+        BoldItalicFont=Whitney-BoldItalic
+    ]
+}
+
+% Set up Whitman font configuration
+\newcommand{\setupwhitmanfont}{%
+    \setmainfont{Whitman}[
+        Path=Fonts/Whitman/,
+        Extension = .ttf,
+        UprightFont=Whitman-RomanLF,
+        BoldFont=Whitman-BoldLF,
+        ItalicFont=Whitman-ItalicLF,
+        BoldItalicFont=Whitman-BoldLF
+    ]
+}
+
+% Apply the chosen font configuration
+\def\whitneyfont{whitney}
+\def\whitmanfont{whitman}
+\edef\currentfont{\bodyfontchoice}
+\ifx\currentfont\whitmanfont
+    \setupwhitmanfont
+\else
+    \ifx\currentfont\whitneyfont
+        \setupwhitneyfont
+    \else
+        \setupwhitneyfont % Default fallback
+    \fi
+\fi
+
+% =============================================================================
+% FONT COMMANDS
+% =============================================================================
+
+% Smart font command: uses sans-serif font (DIN or Helvetica) for headers
+\newcommand{\smartfont}[1]{%
+    \sffamily #1%
+}
+
+% Body text font command: uses serif font (Whitney or Times New Roman)
+\newcommand{\bodyfont}[1]{%
+    \rmfamily #1%
+}
+
+% Ensure document body uses serif font by default
+\AtBeginDocument{%
+    \rmfamily
+}
+
+% Title font: 20pt, bold, smart font (DIN or Helvetica)
+\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
+
+% Title command with proper line spacing
+\newcommand{\titletext}[2]{%
+    {\titlefont\raggedright #1 \\[0.1in] #2}%
+}
+
+% Author font: 10pt, bold, smart font
+\newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
+
+% Affiliation font: 10pt, regular, smart font
+\newcommand{\affiliationfont}{\fontsize{10}{12}\selectfont\smartfont}
+
+% Abstract heading font: 10pt, bold, smart font
+\newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
+
+% Abstract text font: 9pt, regular, smart font
+\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont\linespread{1.22}\selectfont}
+
+% Metadata labels font: 8pt, bold, smart font (for "Code:", "Date:", etc.)
+\newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\smartfont}
+
+% Metadata text font: 8pt, regular, smart font (for actual values)
+\newcommand{\metadatatextfont}{\fontsize{8}{10}\selectfont\smartfont}
+
+% Section title font: 16pt, bold, smart font
+\newcommand{\sectionfont}{\fontsize{16}{18}\selectfont\bfseries\smartfont}
+
+% Subsection title font: 14pt, bold, smart font
+\newcommand{\subsectionfont}{\fontsize{14}{16}\selectfont\bfseries\smartfont}
+
+% =============================================================================
+% GREY BOX FOR TITLE PAGE
+% =============================================================================
+
+% Create a grey box with rounded corners for the title page
+\newtcolorbox{titlebox}{
+    colback=gray!10,        % Light grey background
+    colframe=gray!10,       % Light grey border (same as background)
+    boxrule=0pt,            % No visible border
+    arc=8pt,                % Rounded corners (8 points radius)
+    left=20pt,              % Left margin inside box
+    right=20pt,             % Right margin inside box
+    top=20pt,               % Top margin inside box
+    bottom=20pt,            % Bottom margin inside box
+    width=\textwidth        % Box width matches page width
+}
+
+% =============================================================================
+% SECTION FORMATTING
+% =============================================================================
+
+% Format section titles with custom font
+\titleformat{\section}{\sectionfont}{\thesection}{1em}{}
+
+% Format subsection titles with custom font
+\titleformat{\subsection}{\subsectionfont}{\thesubsection}{1em}{}
+
+% Format subsubsection titles with custom font
+\titleformat{\subsubsection}{\small\bfseries\smartfont}{\thesubsubsection}{1em}{}
+
+% =============================================================================
+% HYPERLINK SETUP
+% =============================================================================
+
+% Configure hyperlinks to be blue and clickable
+\hypersetup{
+    colorlinks=true,        % Make links colored instead of boxed
+    linkcolor=blue,         % Internal links (like table of contents) are blue
+    urlcolor=blue,          % URLs are blue
+    citecolor=blue          % Citations are blue
+}
+
+% =============================================================================
+% END OF PACKAGE
+% =============================================================================
+
+\endinput

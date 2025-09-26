@@ -1,5 +1,29 @@
 # Jackson Laboratory Paper Template
 
+**Created by: Kumar Lab, The Jackson Laboratory**  
+**GitHub: https://github.com/kumarlabjax/LaTeX-Template**
+
+**License**: Dual license system (Proprietary + Creative Commons BY-NC-ND 4.0)  
+**Restrictions**: Jackson Laboratory use only - see LICENSE files for details
+
+## 🎯 **Two Template Options**
+
+### **⭐ RECOMMENDED: Clean Version**
+- **File**: `jax_main.tex` (120 lines)
+- **Professional**: Uses `jacksonlab.sty` package
+- **Easy**: `\usepackage[whitney]{jacksonlab}`
+- **Clean**: Users see only content, not formatting code
+
+### **Original Version**
+- **File**: `jackson_lab_paper.tex` (382 lines)
+- **All-in-one**: Everything in single file
+- **Educational**: Shows all formatting code
+- **Font switch**: Edit line 25
+
+**📖 See `docs/USER_GUIDE.md` for detailed instructions!**
+
+---
+
 ## 🎨 **Easy Font Switching - Choose Your Style**
 
 **NEW FEATURE**: Switch between professional fonts with a single line change!
@@ -44,11 +68,11 @@
 ./scripts/compile_simple.sh
 
 # Or use the traditional method
-xelatex jackson_lab_paper.tex
+xelatex jax_main.tex
 ```
 
 ### **3. View Your PDF**
-Open `jackson_lab_paper.pdf` to see your paper with the chosen font!
+Open `jax_main.pdf` to see your paper with the chosen font!
 
 ---
 
@@ -624,9 +648,9 @@ The fonts are automatically configured in the template using the `fontspec` pack
 
 ```
 Your Folder/
-├── main_jax.tex                      # NEW: Merged strategic document with Jackson Lab formatting
-├── jackson_lab_paper.tex             # Original modular template file (includes all sections)
-├── main3.tex                         # Original strategic document content
+├── jax_main.tex                      # ⭐ RECOMMENDED: Clean template (120 lines)
+├── jackson_lab_paper.tex             # Original template (382 lines)
+├── jacksonlab.sty                    # Professional style package
 ├── references.bib                    # Bibliography file (edit this)
 ├── 01_introduction.tex               # Introduction section (edit this)
 ├── 02_methods.tex                    # Methods section (edit this)
