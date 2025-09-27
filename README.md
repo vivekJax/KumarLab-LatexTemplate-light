@@ -1,5 +1,5 @@
 # Jackson Laboratory Paper Template
-
+# Pull request
 **Created by: Kumar Lab, The Jackson Laboratory**  
 **GitHub: https://github.com/kumarlabjax/LaTeX-Template**
 
