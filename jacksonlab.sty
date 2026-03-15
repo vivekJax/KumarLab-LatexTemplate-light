@@ -58,19 +58,21 @@
 \RequirePackage{fontspec}           % Custom fonts
 \RequirePackage{amsmath,amsfonts,amssymb}  % Math symbols
 \RequirePackage{graphicx}           % Images
-\RequirePackage{url}                 % Web links
+\RequirePackage[hyphens]{url}        % Web links (hyphens allows URL line breaking)
 \RequirePackage{cite}               % Citations
 \RequirePackage{geometry}           % Page layout
 \RequirePackage{booktabs}            % Professional tables
 \RequirePackage{algorithm}           % Algorithm blocks
 \RequirePackage{algorithmic}         % Algorithm pseudocode
 \RequirePackage{hyperref}            % Clickable links
+\RequirePackage{doi}                 % Clickable DOIs in bibliography
 \RequirePackage{fancyhdr}            % Headers and footers
 \RequirePackage{titlesec}            % Section titles
 \RequirePackage{enumitem}            % Lists
 \RequirePackage{multirow}            % Table cells
 \RequirePackage{array}               % Table formatting
 \RequirePackage{subcaption}          % Subfigures
+\RequirePackage{caption}             % Caption font/size control
 \RequirePackage[table]{xcolor}       % Colors
 \RequirePackage{listings}            % Code blocks
 \RequirePackage[most]{tcolorbox}      % Enhanced colored boxes with page breaking
@@ -133,12 +135,27 @@
     ]
 }
 
+% Whitney as a named font family for caption use when body font is Whitman
+\newfontfamily\whitneycaptionfont{Whitney}[
+    Path=Fonts/Whitney/,
+    Extension = .otf,
+    UprightFont=Whitney-Book,
+    BoldFont=Whitney-Bold,
+    ItalicFont=Whitney-BookItalic,
+    BoldItalicFont=Whitney-BoldItalic
+]
+\global\let\whitneycaptionfont\whitneycaptionfont
+
 % Apply the chosen font configuration
 \def\whitneyfont{whitney}
 \def\whitmanfont{whitman}
 \edef\currentfont{\bodyfontchoice}
 \ifx\currentfont\whitmanfont
     \setupwhitmanfont
+    % Figure/table captions in Whitney at 9pt (matches abstract size); bold labels
+    \DeclareCaptionFont{captionwhitney}{\whitneycaptionfont}
+    \DeclareCaptionFont{captionwhitney9}{\fontsize{9}{11}\selectfont\whitneycaptionfont}
+    \captionsetup{font=captionwhitney9,labelfont=bf}
 \else
     \ifx\currentfont\whitneyfont
         \setupwhitneyfont
@@ -221,6 +238,23 @@
 \newcommand{\subsectionfont}{\fontsize{14}{16}\selectfont\bfseries\smartfont}
 
 % =============================================================================
+% TABLE FORMATTING
+% =============================================================================
+
+% Table width: slightly narrower than text so row shading aligns with booktabs rules
+\newlength{\mytablewidth}
+\setlength{\mytablewidth}{\dimexpr\textwidth-12pt\relax}
+
+% Gray row shading command: use \gr at the start of alternating rows
+\newcommand{\gr}{\rowcolor{gray!15}}
+
+% Custom column type L{width}:
+% - Left-aligned, vertically centered, with 2.5pt internal padding
+% - Hanging indent on wrapped lines
+% - Use with \setlength{\tabcolsep}{0pt} for seamless row color
+\newcolumntype{L}[1]{>{\hspace{2.5pt}\setlength{\hangindent}{2.5pt}\setlength{\hangafter}{1}\raggedright\arraybackslash}m{#1}<{\hspace{2.5pt}}}
+
+% =============================================================================
 % GREY BOX FOR TITLE PAGE
 % =============================================================================
 
@@ -244,8 +278,8 @@
 % Format section titles with custom font
 \titleformat{\section}{\sectionfont}{\thesection}{1em}{}
 
-% Format subsection titles with custom font
-\titleformat{\subsection}{\subsectionfont}{\thesubsection}{1em}{}
+% Format subsection titles with custom font; [hang] allows long titles to wrap
+\titleformat{\subsection}[hang]{\subsectionfont}{\thesubsection}{1em}{\raggedright}
 
 % Format subsubsection titles with custom font
 \titleformat{\subsubsection}{\small\bfseries\smartfont}{\thesubsubsection}{1em}{}

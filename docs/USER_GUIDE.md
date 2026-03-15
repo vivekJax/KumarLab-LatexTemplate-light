@@ -168,6 +168,63 @@ Edit `jacksonlab.sty`:
 
 ---
 
+## Tables
+
+The template provides a standardized table format with gray alternating rows, no column seams, and left-aligned cells with hanging indent on wrapped text.
+
+### Standard Table Pattern
+```latex
+\begin{table}[h!]
+\centering
+\begin{minipage}{\mytablewidth}
+\centering
+\sffamily\small
+{\setlength{\tabcolsep}{0pt}%
+\begin{tabular}{@{}L{3cm}L{2.5cm}L{\dimexpr\mytablewidth-3cm-2.5cm\relax}@{}}
+\toprule
+\textbf{Col 1} & \textbf{Col 2} & \textbf{Col 3} \\
+\midrule
+\gr Shaded row & data & data \\
+Unshaded row & data & data \\
+\gr Shaded row & data & data \\
+\bottomrule
+\end{tabular}}
+\end{minipage}
+\caption{Your caption.}
+\end{table}
+```
+
+**Key points:**
+- `L{width}` — left-aligned column with hanging indent on wrap
+- `\gr` — gray shading for alternating rows
+- `\mytablewidth` — consistent width matching page margins
+- Last column width: use `\dimexpr\mytablewidth-<other widths>\relax`
+- Set `\tabcolsep` to `0pt` inside a group so row color has no white seams
+
+See `05_supplement.tex` for a working example.
+
+---
+
+## Figure/Table Captions
+
+When using the **Whitman** body font, figure and table captions automatically render in **Whitney** at 9pt for visual contrast. Caption labels (e.g. **Figure 1:**) are bold. This happens automatically — no configuration needed.
+
+---
+
+## Handling Long URLs and Text Overflow
+
+The template automatically breaks long URLs at hyphens. If a paragraph with a URL or long `\texttt{...}` still overflows into the margin, wrap just that paragraph:
+
+```latex
+\begin{sloppypar}
+Your paragraph with a long \url{https://example.com/very/long/path} here.
+\end{sloppypar}
+```
+
+This allows slightly looser line-breaking for that paragraph only.
+
+---
+
 ## Troubleshooting
 
 **Fonts not working:**

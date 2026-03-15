@@ -24,47 +24,32 @@ Include supplementary figures here. These are figures that support your main fin
 
 Include supplementary tables here. These provide additional data that supports your main findings.
 
-Example of supplementary table:
-\begin{table}[h]
+% Example table using the standard Jackson Lab table format:
+% - Gray alternating rows with \gr, no column seams
+% - L{} column type for left-aligned cells with hanging indent
+% - \mytablewidth for consistent width matching booktabs rules
+%
+% Copy this pattern for your own tables. Adjust column widths so they
+% sum to \mytablewidth (use \dimexpr for the last column).
+\begin{table}[h!]
 \centering
-\begin{tabular}{lccc}
+\begin{minipage}{\mytablewidth}
+\centering
+\sffamily\small
+{\setlength{\tabcolsep}{0pt}%
+\begin{tabular}{@{}L{3cm}L{2.5cm}L{2.5cm}L{\dimexpr\mytablewidth-3cm-2.5cm-2.5cm\relax}@{}}
 \toprule
-Parameter & Group A & Group B & Group C \\
+\textbf{Parameter} & \textbf{Group A} & \textbf{Group B} & \textbf{Group C} \\
 \midrule
-Mean & 10.5 & 12.3 & 9.8 \\
+\gr Mean & 10.5 & 12.3 & 9.8 \\
 SD & 2.1 & 1.9 & 2.3 \\
+\gr Median & 10.2 & 12.0 & 9.5 \\
+Range & 5.1--15.9 & 8.4--16.2 & 5.3--14.3 \\
 \bottomrule
-\end{tabular}
-\caption{Supplementary Table 1: Additional descriptive statistics.}
+\end{tabular}}
+\end{minipage}
+\caption{Supplementary Table 1: Descriptive statistics by group.}
 \label{tab:supp1}
-\end{table}
-
-
-\begin{table}[htbp]
-\centering
-\rowcolors{2}{gray!15}{white}
-\begin{tabular}{cccc}
-\toprule
-birthDate & ExptDoneBy & Age(wks) & d \\
-\midrule
-1/17/23 0:00 & 35 & 13.42 & 30.3 \\
-1/17/23 0:00 & 35 & 13.42 & 26.5 \\
-1/17/23 0:00 & 35 & 13.42 & 26.9 \\
-1/17/23 0:00 & 35 & 13.42 & 25.8 \\
-1/17/23 0:00 & 35 & 13.42 & 26.8 \\
-2/14/23 0:00 & 35 & 9.42 & 25.1 \\
-2/14/23 0:00 & 35 & 9.42 & 24.7 \\
-2/14/23 0:00 & 35 & 9.42 & 22.6 \\
-2/14/23 0:00 & 35 & 9.42 & 25.4 \\
-2/14/23 0:00 & 35 & 9.42 & 25.9 \\
-2/14/23 0:00 & 35 & 9.42 & 24.6 \\
-1/17/23 0:00 & 35 & 13.42 & 26.2 \\
-1/17/23 0:00 & 35 & 13.85 & 29.5 \\
-1/17/23 0:00 & 35 & 13.85 & 26.9 \\
-1/17/23 0:00 & 35 & 13.85 & 27.4 \\
-1/17/23 0:00 & 35 & 13.85 & 26 \\
-\bottomrule
-\end{tabular}
 \end{table}
 
     
