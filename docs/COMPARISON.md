@@ -1,240 +1,82 @@
-# 📊 **Template Comparison: Original vs Clean Version**
+# Template Comparison: Full Paper vs Quick Document
 
-**Created by: Kumar Lab, The Jackson Laboratory**  
-**GitHub: https://github.com/kumarlabjax/LaTeX-Template**
-
-## 🎯 **Recommendation: Use the Clean Version!**
+**Created by: Kumar Lab, The Jackson Laboratory**
+**GitHub: https://github.com/KumarLabJax/KumarLab-LatexTemplate**
 
 ---
 
-## 📄 **File Comparison**
+## At a Glance
 
-| Aspect | Original Template | Clean Template |
-|--------|------------------|----------------|
-| **Lines of Code** | 382 lines | 120 lines |
-| **User Focus** | Mixed formatting + content | Pure content |
-| **Maintainability** | Hard to maintain | Easy to maintain |
-| **Reusability** | Single document only | Multiple documents |
-| **Professional** | Amateur approach | Professional approach |
-| **Font Switching** | Edit line 25 | `\usepackage[whitney]{jacksonlab}` |
+| | `jax_main.tex` (Full Paper) | `jax_simple.tex` (Quick Document) |
+|---|---|---|
+| **Use case** | Research papers, multi-author work | Short reports, memos, single-author docs |
+| **Structure** | Modular — one file per section | Self-contained — everything in one file |
+| **Section files** | `01_introduction.tex`, `02_methods.tex`, etc. | None — write sections inline |
+| **Collaboration** | Easy — each author edits their own file | Single-file — one person at a time |
+| **Style** | `\usepackage[whitney]{jacksonlab}` | Same |
+| **Output** | Identical PDF formatting | Identical PDF formatting |
 
 ---
 
-## 🔍 **Code Comparison**
+## When to Use Each
 
-### **Original Template (382 lines)**
+### Use `jax_main.tex` when:
+- Writing a full research paper with standard sections
+- Collaborating with co-authors (each person edits their section file)
+- Managing a long document where splitting into files helps organization
+- Using version control and want clean diffs per section
+
+### Use `jax_simple.tex` when:
+- Writing a short report, memo, or letter
+- Working alone on a quick document
+- You don't need the full Introduction/Methods/Results/Discussion structure
+- You want to get started fast with zero setup
+
+---
+
+## Structural Difference
+
+### `jax_main.tex` — pulls in section files
 ```latex
-% =============================================================================
-% JACKSON LABORATORY PAPER TEMPLATE - SINGLE FILE VERSION
-% =============================================================================
-% This is a complete, self-contained template for Jackson Lab papers
-% All formatting and font substitutions are included in this file
-% No external files needed except your logo and content
-% =============================================================================
-
-% =============================================================================
-% DOCUMENT SETUP
-% =============================================================================
-
-% Document class: 11pt font, single column, article format
-% CHANGES: 10pt=smaller text, 12pt=larger text, twocolumn=two-column layout
-\documentclass[11pt,onecolumn]{article}
-
-% =============================================================================
-% FONT CONFIGURATION - Choose your body font
-% =============================================================================
-
-% Choose your preferred body font:
-% Options: "whitney" or "whitman"
-% Change this line to switch between fonts:
-% CHANGES: whitney=modern serif, whitman=traditional serif
-\newcommand{\bodyfontchoice}{whitney}
-
-% Font configuration will be set up automatically based on your choice above
-
-% =============================================================================
-% PACKAGES - These add functionality to LaTeX
-% =============================================================================
-
-% Essential packages for fonts and text
-\usepackage{fontspec}           % Allows using system fonts (DIN, Whitman, etc.)
-% CHANGES: Required for custom fonts, without it only default fonts work
-\usepackage{amsmath,amsfonts,amssymb}  % Math symbols and equations
-% CHANGES: Required for complex math, without it equations break
-\usepackage{graphicx}           % For including images (like your logo)
-% CHANGES: Required for \includegraphics, without it images fail
-\usepackage{url}                % For web links
-\usepackage{cite}               % For citations and references
-% CHANGES: Required for \cite{} commands, without it citations show as [?]
-\usepackage{geometry}           % For page layout and margins
-% ... 300+ more lines of formatting code ...
-```
-
-### **Clean Template (120 lines)**
-```latex
-% =============================================================================
-% JACKSON LABORATORY PAPER TEMPLATE - CLEAN VERSION
-% =============================================================================
-% This is a clean, user-friendly template for Jackson Lab papers
-% All formatting is handled by the jacksonlab.sty package
-% Users only need to focus on content!
-% =============================================================================
-
-% =============================================================================
-% DOCUMENT SETUP
-% =============================================================================
-
-% Document class: 11pt font, single column, article format
-\documentclass[11pt,onecolumn]{article}
-
-% =============================================================================
-% STYLE PACKAGE
-% =============================================================================
-
-% Load Jackson Lab formatting package
-% Options: whitney (modern) or whitman (traditional)
-\usepackage[whitney]{jacksonlab}
-
-% =============================================================================
-% BEGIN DOCUMENT
-% =============================================================================
-
 \begin{document}
+  \begin{titlebox}
+    % Title page content ...
+  \end{titlebox}
 
-% =============================================================================
-% TITLE PAGE - Everything goes in the grey box
-% =============================================================================
+  \input{01_introduction}    % separate file
+  \input{02_methods}         % separate file
+  \input{03_results}         % separate file
+  \input{04_discussion}      % separate file
+  \input{05_supplement}      % separate file
 
-% Start the grey box that contains all the title page information
-\begin{titlebox}
-
-% Jackson Laboratory Logo
-\vspace{-0.05in}
-\includegraphics[height=0.6in]{figures/JAX logo.png}
-
-% Add space between logo and title
-\vspace{0.2in}
-
-% Paper Title
-% \titletext command handles proper line spacing automatically
-\titletext{JAX \textbf{LaTeX}: Isn't It Nice To Have}{Something Like This?}
-
-% ... clean, focused content ...
+  \bibliography{references}
+\end{document}
 ```
 
----
-
-## 🎨 **Font Switching Comparison**
-
-### **Original Template**
+### `jax_simple.tex` — everything inline
 ```latex
-% Line 25: Edit this line to change fonts
-\newcommand{\bodyfontchoice}{whitney}  % Change to whitman
+\begin{document}
+  \begin{titlebox}
+    % Title page content ...
+  \end{titlebox}
+
+  \section{Introduction}
+  % Write directly here
+
+  \section{Methods}
+  % Write directly here
+
+  \bibliography{references}
+\end{document}
 ```
 
-### **Clean Template**
-```latex
-% Easy, professional font switching
-\usepackage[whitney]{jacksonlab}  % Modern serif
-\usepackage[whitman]{jacksonlab}  % Traditional serif
-```
-
 ---
 
-## 🛠️ **Customization Comparison**
+## Shared Features
 
-### **Original Template**
-- Edit formatting code mixed with content
-- Risk breaking the document
-- Hard to find what to change
-- No separation of concerns
-
-### **Clean Template**
-- Edit `jacksonlab.sty` for formatting
-- Edit `.tex` file for content
-- Clear separation of concerns
-- Professional approach
-
----
-
-## 📈 **Benefits Analysis**
-
-### **Clean Template Benefits:**
-
-1. **🎯 User Experience**
-   - Users see only content, not formatting
-   - Clean, readable code
-   - Professional appearance
-
-2. **🔧 Maintainability**
-   - Formatting in one place (`jacksonlab.sty`)
-   - Easy to update styles
-   - No risk of breaking content
-
-3. **♻️ Reusability**
-   - Use same styles in multiple documents
-   - Share style package with team
-   - Consistent formatting across projects
-
-4. **📚 Professional**
-   - Follows LaTeX best practices
-   - Industry standard approach
-   - Easy to understand and modify
-
-5. **🚀 Scalability**
-   - Easy to add new features
-   - Simple to create variants
-   - Clean architecture
-
-### **Original Template Issues:**
-
-1. **❌ Mixed Concerns**
-   - Formatting mixed with content
-   - Hard to maintain
-   - Confusing for users
-
-2. **❌ Poor Reusability**
-   - Can't reuse formatting
-   - Copy-paste approach
-   - Inconsistent results
-
-3. **❌ Maintenance Nightmare**
-   - Changes require editing main file
-   - Risk of breaking content
-   - Hard to track changes
-
----
-
-## 🎯 **Final Recommendation**
-
-### **Use Clean Template If:**
-- ✅ You want professional, maintainable code
-- ✅ You plan to create multiple papers
-- ✅ You want easy font switching
-- ✅ You prefer clean, readable code
-- ✅ You want to customize formatting easily
-- ✅ You want to follow LaTeX best practices
-
-### **Use Original Template If:**
-- ❌ You want everything in one file (not recommended)
-- ❌ You don't mind seeing formatting code (not recommended)
-- ❌ You're just experimenting (temporary use only)
-
----
-
-## 🚀 **Migration Path**
-
-### **From Original to Clean:**
-1. Copy your content from `jackson_lab_paper.tex`
-2. Paste into `jax_main.tex`
-3. Update font choice: `\usepackage[whitney]{jacksonlab}`
-4. Compile and enjoy the clean experience!
-
-### **Benefits After Migration:**
-- 70% fewer lines of code to maintain
-- Professional, clean appearance
-- Easy customization
-- Better user experience
-- Industry-standard approach
-
-**🎉 The clean version is the clear winner for professional use!**
+Both templates provide:
+- Same `jacksonlab.sty` formatting package
+- Same font options (Whitney / Whitman)
+- Same title page layout (grey box, logo, authors, abstract)
+- Same compilation process (`xelatex`)
+- Same bibliography support (`references.bib`)

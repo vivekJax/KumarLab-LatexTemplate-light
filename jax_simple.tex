@@ -1,0 +1,113 @@
+% =============================================================================
+% JACKSON LABORATORY - SIMPLE SINGLE-FILE TEMPLATE
+% =============================================================================
+%
+% Copyright (c) 2025 The Jackson Laboratory. All rights reserved.
+%
+% Created by: Kumar Lab, The Jackson Laboratory
+% GitHub: https://github.com/KumarLabJax/KumarLab-LatexTemplate
+%
+% USE THIS TEMPLATE FOR: Quick documents, short reports, memos, or any
+% document where you want everything in a single file.
+%
+% For full multi-section papers, use jax_main.tex instead.
+%
+% =============================================================================
+
+% Document class: 11pt font, single column, article format
+\documentclass[11pt,onecolumn]{article}
+
+% Load Jackson Lab formatting package
+% Options: whitney (modern) or whitman (traditional)
+\usepackage[whitney]{jacksonlab}
+
+% =============================================================================
+% BEGIN DOCUMENT
+% =============================================================================
+
+\begin{document}
+
+% =============================================================================
+% TITLE PAGE
+% =============================================================================
+
+\begin{titlebox}
+
+% Jackson Laboratory Logo
+\vspace{-0.05in}
+\includegraphics[height=0.6in]{figures/JAX logo.png}
+
+\vspace{0.2in}
+
+% Paper Title — edit the two lines below
+\titletext{Your Title First Line}{Your Title Second Line}
+
+\vspace{0.2in}
+
+% Author List
+% Symbols: * = Equal contribution, † = Correspondence, ‡ = Senior author
+{\authorfont
+First Author*,
+Second Author*†,
+Third Author‡}
+
+\vspace{0.1in}
+
+% Institution
+{\affiliationfont The Jackson Laboratory \\ 600 Main Street, Bar Harbor, ME 04609, USA}
+
+\vspace{0.1in}
+
+% Abstract
+{\abstractheadingfont Abstract}
+
+\vspace{0.1in}
+
+% Replace this text with your abstract
+{\abstractfont Your abstract goes here. Summarize the purpose, methods, key findings, and conclusions of your work.}
+
+\vspace{0.2in}
+
+% Author designation legend
+{\metadatalabelfont *Equal contribution, †Correspondence, ‡Senior author}
+
+% Metadata
+{\metadatalabelfont Code:} {\metadatatextfont\href{https://github.com/KumarLabJax}{https://github.com/KumarLabJax}} \\
+{\metadatalabelfont Correspondence:} {\metadatatextfont{\color{blue}\href{mailto:your.name@jax.org}{your.name@jax.org}}} \\
+{\metadatalabelfont Date:} {\metadatatextfont \today}
+
+\end{titlebox}
+
+% =============================================================================
+% CONTENT — Write everything below
+% =============================================================================
+
+% Add sections as needed. For a simple document you might only need one or two.
+% Delete or add sections freely — this file is self-contained.
+
+\section{Introduction}
+
+% Your introduction here.
+
+\section{Methods}
+
+% Your methods here.
+
+\section{Results}
+
+% Your results here.
+
+\section{Discussion}
+
+% Your discussion here.
+
+% =============================================================================
+% REFERENCES
+% =============================================================================
+
+\section{References}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
