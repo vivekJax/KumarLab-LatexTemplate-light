@@ -1,5 +1,5 @@
 # Jackson Laboratory Paper Template
-
+# Pull request
 **Created by: Kumar Lab, The Jackson Laboratory**  
 **GitHub: https://github.com/kumarlabjax/LaTeX-Template**
 
@@ -73,6 +73,27 @@ xelatex jax_main.tex
 
 ### **3. View Your PDF**
 Open `jax_main.pdf` to see your paper with the chosen font!
+
+## 🧪 **Testing Framework (Like Having a Helper Friend!)**
+
+**Testing is like having a friend who checks your work and tells you if something breaks:**
+
+```bash
+# Run all tests (like asking your friend to check everything)
+./tests/run_tests.sh
+
+# Continuous testing (like having a friend watch you work)
+./tests/watch_tests.sh
+```
+
+**What We Check:**
+- ✅ **Fonts** (like checking if all your crayons work)
+- ✅ **Style Package** (like checking if your ruler is straight)
+- ✅ **Compilation** (like checking if your printer works)
+- ✅ **Complete Workflows** (like checking your whole project)
+- ✅ **PDF Quality** (like checking if your final drawing is pretty)
+
+**📖 See `tests/README.md` for super simple testing guide (written for beginners!)**
 
 ---
 

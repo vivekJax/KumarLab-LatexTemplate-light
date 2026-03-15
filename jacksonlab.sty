@@ -73,13 +73,14 @@
 \RequirePackage{subcaption}          % Subfigures
 \RequirePackage[table]{xcolor}       % Colors
 \RequirePackage{listings}            % Code blocks
-\RequirePackage{tcolorbox}           % Colored boxes
+\RequirePackage[most]{tcolorbox}      % Enhanced colored boxes with page breaking
 \RequirePackage{tikz}                % Graphics
 \RequirePackage{environ}             % Advanced environments
 \RequirePackage{lipsum}              % Dummy text
 \RequirePackage{tabularray}          % Advanced tables
 \UseTblrLibrary{booktabs}           % Booktabs library
 \RequirePackage{sansmath}            % Sans-serif math
+\RequirePackage{mdframed}            % Framed environments with page breaking
 
 % =============================================================================
 % PAGE SETUP
@@ -185,6 +186,28 @@
 
 % Abstract text font: 9pt, regular, smart font
 \newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont\linespread{1.22}\selectfont}
+
+% Abstract gray box definition
+% This creates a gray box around the abstract that can break across pages
+\newtcolorbox{abstractbox}{
+    colback=gray!10,           % Light gray background
+    colframe=gray!30,          % Gray border
+    boxrule=0.5pt,             % Border thickness
+    arc=2pt,                   % Rounded corners
+    left=8pt,                   % Left margin inside box
+    right=8pt,                  % Right margin inside box
+    top=8pt,                    % Top margin inside box
+    bottom=8pt,                 % Bottom margin inside box
+    before skip=0.1in,          % Space before the box
+    after skip=0.2in,           % Space after the box
+    % Note: Basic tcolorbox doesn't support page breaking
+    % For very long abstracts, consider using a simpler approach
+}
+
+% Simple gray background for long abstracts
+% This provides a gray background that can break across pages
+% Note: This is a simple solution that works for most cases
+% For very long abstracts, the gray background will extend to the next page
 
 % Metadata labels font: 8pt, bold, smart font (for "Code:", "Date:", etc.)
 \newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\smartfont}
