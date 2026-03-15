@@ -1,180 +1,185 @@
-# 🎯 **Jackson Lab LaTeX Template - User Guide**
+# Jackson Lab LaTeX Template - User Guide
 
-**Created by: Kumar Lab, The Jackson Laboratory**  
-**GitHub: https://github.com/kumarlabjax/LaTeX-Template**
+**Created by: Kumar Lab, The Jackson Laboratory**
+**GitHub: https://github.com/KumarLabJax/KumarLab-LatexTemplate**
 
-## 🚀 **Quick Start (2 Options)**
+---
 
-### **Option 1: Clean Version (Recommended)**
+## Two Templates, Two Use Cases
+
+### `jax_main.tex` — Full Paper (Modular)
+Each section lives in its own file. Use this for research papers where multiple people may collaborate.
+
 ```latex
-% Use the clean template with style package
 \documentclass[11pt,onecolumn]{article}
 \usepackage[whitney]{jacksonlab}  % or [whitman] for traditional font
+\begin{document}
+  % Title page ...
+  \input{01_introduction}
+  \input{02_methods}
+  \input{03_results}
+  \input{04_discussion}
+  \input{05_supplement}
+\end{document}
 ```
 
-### **Option 2: All-in-One Version**
-```latex
-% Use the original template with all formatting included
-\documentclass[11pt,onecolumn]{article}
-% (All formatting code is included in the file)
-```
-
----
-
-## 📁 **File Structure**
-
-```
-📁 Your Project/
-├── 📄 jax_main.tex                   ← Clean template (recommended)
-├── 📄 jackson_lab_paper.tex          ← Original template
-├── 📄 jacksonlab.sty                 ← Style package
-├── 📁 figures/
-│   └── 🖼️ JAX logo.png
-├── 📁 Fonts/
-│   ├── 📁 DIN/
-│   ├── 📁 Whitney/
-│   └── 📁 Whitman/
-└── 📄 references.bib
-```
-
----
-
-## 🎨 **Font Switching**
-
-### **Clean Version (Easy)**
-```latex
-\usepackage[whitney]{jacksonlab}  % Modern serif
-\usepackage[whitman]{jacksonlab}  % Traditional serif
-```
-
-### **Original Version**
-```latex
-\newcommand{\bodyfontchoice}{whitney}  % Line 25
-\newcommand{\bodyfontchoice}{whitman}  % Line 25
-```
-
----
-
-## ✏️ **What to Edit**
-
-### **Title**
-```latex
-\titletext{Your Paper Title}{Second Line if Needed}
-```
-
-### **Authors**
-```latex
-{\authorfont 
-Your Name*, 
-Co-Author Name*†, 
-Another Author, 
-\\ Senior Author‡}
-```
-
-### **Institution**
-```latex
-{\affiliationfont Your Institution \\ Your Address}
-```
-
-### **Abstract**
-```latex
-{\abstractfont Your actual abstract text here...}
-```
-
-### **Content**
-Edit the section files:
+**Edit these files for content:**
 - `01_introduction.tex`
 - `02_methods.tex`
 - `03_results.tex`
 - `04_discussion.tex`
 - `05_supplement.tex`
 
+### `jax_simple.tex` — Quick Document (Single File)
+Everything in one file. Use this for short reports, memos, or any document that doesn't need the full modular structure.
+
+```latex
+\documentclass[11pt,onecolumn]{article}
+\usepackage[whitney]{jacksonlab}
+\begin{document}
+  % Title page ...
+  \section{Introduction}
+  % Write directly here
+  \section{Methods}
+  % Write directly here
+\end{document}
+```
+
 ---
 
-## 🔧 **Compilation**
+## File Structure
 
-### **Simple Compilation**
+```
+Your Project/
+├── jax_main.tex              # Full paper template (modular)
+├── jax_simple.tex            # Quick document template (single file)
+├── jacksonlab.sty            # Style package
+├── 01_introduction.tex       # Section files (for jax_main.tex)
+├── 02_methods.tex
+├── 03_results.tex
+├── 04_discussion.tex
+├── 05_supplement.tex
+├── references.bib            # Bibliography
+├── figures/                  # Figures and images
+├── Fonts/                    # Font files (DIN, Whitney, Whitman)
+└── scripts/                  # Compilation scripts
+```
+
+---
+
+## Font Switching
+
+Switch fonts by changing the package option:
+
+```latex
+\usepackage[whitney]{jacksonlab}  % Modern serif
+\usepackage[whitman]{jacksonlab}  % Traditional serif
+```
+
+**DIN Next LT Pro** is always used for headers and titles regardless of font choice.
+
+---
+
+## What to Edit
+
+### Title
+```latex
+\titletext{Your Paper Title}{Second Line if Needed}
+```
+
+### Authors
+```latex
+{\authorfont
+Your Name*,
+Co-Author Name*†,
+Another Author,
+\\ Senior Author‡}
+```
+
+**Symbols**: `*` Equal contribution, `†` Correspondence, `‡` Senior author, `§` Additional
+
+### Institution
+```latex
+{\affiliationfont Your Institution \\ Your Address}
+```
+
+### Abstract
+```latex
+{\abstractfont Your actual abstract text here.}
+```
+
+### Metadata
+```latex
+{\metadatalabelfont Code:} {\metadatatextfont\href{https://github.com/your-repo}{https://github.com/your-repo}} \\
+{\metadatalabelfont Correspondence:} {\metadatatextfont{\color{blue}\href{mailto:your-email@jax.org}{your-email@jax.org}}} \\
+{\metadatalabelfont Date:} {\metadatatextfont \today}
+```
+
+---
+
+## Compilation
+
+### Simple (no bibliography updates)
 ```bash
 ./scripts/compile_simple.sh
 ```
 
-### **With Bibliography**
+### Full (with bibliography)
 ```bash
 ./scripts/compile_with_bibtex.sh
 ```
 
-### **Manual Compilation**
+### Watch mode (auto-recompile on save)
+```bash
+./scripts/watch_latex.sh
+```
+
+### Manual
 ```bash
 xelatex jax_main.tex
 ```
 
 ---
 
-## 🎯 **Which Version Should I Use?**
+## Customization
 
-### **Use Clean Version If:**
-- ✅ You want a professional, maintainable template
-- ✅ You plan to create multiple papers
-- ✅ You want easy font switching
-- ✅ You prefer clean, readable code
-- ✅ You want to customize formatting easily
-
-### **Use Original Version If:**
-- ✅ You want everything in one file
-- ✅ You don't mind seeing formatting code
-- ✅ You're just experimenting
-- ✅ You want to understand how everything works
-
----
-
-## 🛠️ **Customization**
-
-### **Font Sizes**
+### Font Sizes
 Edit `jacksonlab.sty`:
 ```latex
 \newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
-% CHANGES: 18=smaller, 22=larger title
+% Change 20 to 18 (smaller) or 22 (larger)
 ```
 
-### **Colors**
+### Title Box Colors
 Edit `jacksonlab.sty`:
 ```latex
 \newtcolorbox{titlebox}{
-    colback=gray!10,  % CHANGES: white=no background, blue!10=light blue
+    colback=gray!10,  % Change to white, blue!10, etc.
 ```
 
-### **Spacing**
+### Spacing
 Edit `jacksonlab.sty`:
 ```latex
 \newcommand{\titletext}[2]{%
     {\titlefont\raggedright #1 \\[0.1in] #2}%
 }
-% CHANGES: 0.05in=less space, 0.2in=more space between title lines
+% Change 0.1in to 0.05in (tighter) or 0.2in (looser)
 ```
 
 ---
 
-## ❓ **Troubleshooting**
+## Troubleshooting
 
-### **Fonts not working:**
+**Fonts not working:**
 - Make sure you're using `xelatex` (not `pdflatex`)
 - Check that font files are in the `Fonts/` folder
 
-### **Compilation errors:**
+**Compilation errors:**
 - Use the scripts in the `scripts/` folder
 - Make sure all files are in the same directory
 
-### **Style not loading:**
+**References showing [?]:**
+- Run `./scripts/compile_with_bibtex.sh`
+
+**Style not loading:**
 - Make sure `jacksonlab.sty` is in the same folder as your `.tex` file
-
----
-
-## 🎉 **Benefits of Clean Version**
-
-1. **Professional**: Follows LaTeX best practices
-2. **Maintainable**: Easy to update formatting
-3. **Reusable**: Use the same styles in multiple documents
-4. **Clean**: Users only see content, not formatting code
-5. **Flexible**: Easy to customize without breaking things
-
-**Recommendation: Use the clean version for the best experience!**
