@@ -64,13 +64,9 @@ Both options use **DIN Next LT Pro** for headers and titles automatically.
 
 ### Font Examples
 
-**Whitney (Modern):**
-
-![Whitney Font Example](figures/font_example_whitney.png)
-
-**Whitman (Traditional):**
-
-![Whitman Font Example](figures/font_example_whitman.png)
+| Whitney (Modern) | Whitman (Traditional) |
+|:-:|:-:|
+| <img src="figures/font_example_whitney.png" width="400"> | <img src="figures/font_example_whitman.png" width="400"> |
 
 ---
 
