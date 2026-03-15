@@ -62,6 +62,16 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 Both options use **DIN Next LT Pro** for headers and titles automatically.
 
+### Font Examples
+
+**Whitney (Modern):**
+
+![Whitney Font Example](figures/font_example_whitney.png)
+
+**Whitman (Traditional):**
+
+![Whitman Font Example](figures/font_example_whitman.png)
+
 ---
 
 ## What to Edit
