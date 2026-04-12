@@ -15,6 +15,7 @@
 # Compiled PDFs (compile locally, don't commit)
 *.pdf
 !sample_sourcesans.pdf
+!sample_garamond.pdf
 !sample_termes.pdf
 
 # OS files

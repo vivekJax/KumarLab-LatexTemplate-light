@@ -8,6 +8,7 @@
 
 % Package options
 \DeclareOption{sourcesans}{\newcommand{\bodyfontchoice}{sourcesans}}
+\DeclareOption{garamond}{\newcommand{\bodyfontchoice}{garamond}}
 \DeclareOption{termes}{\newcommand{\bodyfontchoice}{termes}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
@@ -42,11 +43,27 @@
 \setlength{\parskip}{6pt}
 
 % Apply chosen body font
-\def\sourcesansfont{sourcesans}
+\def\garamondfont{garamond}
 \def\termesfont{termes}
 \edef\currentfont{\bodyfontchoice}
-\ifx\currentfont\termesfont
-    % TeX Gyre Termes — traditional serif (Times-based, cross-platform)
+\ifx\currentfont\garamondfont
+    % EB Garamond — classic humanist serif (cross-platform, ships with TeX Live)
+    \setmainfont{EBGaramond-Regular.otf}[
+        BoldFont=EBGaramond-Bold.otf,
+        ItalicFont=EBGaramond-Italic.otf,
+        BoldItalicFont=EBGaramond-BoldItalic.otf
+    ]
+    % Captions in EB Garamond at 9pt
+    \newfontfamily\captionfontfamily{EBGaramond-Regular.otf}[
+        BoldFont=EBGaramond-Bold.otf,
+        ItalicFont=EBGaramond-Italic.otf,
+        BoldItalicFont=EBGaramond-BoldItalic.otf
+    ]
+    \global\let\captionfontfamily\captionfontfamily
+    \DeclareCaptionFont{captionfont9}{\fontsize{9}{11}\selectfont\captionfontfamily}
+    \captionsetup{font=captionfont9,labelfont=bf}
+\else\ifx\currentfont\termesfont
+    % TeX Gyre Termes — Times-based serif (cross-platform, ships with TeX Live)
     \setmainfont{texgyretermes-regular.otf}[
         BoldFont=texgyretermes-bold.otf,
         ItalicFont=texgyretermes-italic.otf,
@@ -69,7 +86,7 @@
         ItalicFont=SourceSansPro-RegularIt.otf,
         BoldItalicFont=SourceSansPro-SemiboldIt.otf
     ]
-\fi
+\fi\fi
 
 % TeX Gyre Heros for all headers, titles, and UI elements
 % Helvetica clone — ships with every TeX Live installation
