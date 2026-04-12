@@ -61,6 +61,10 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 Both options use **Latin Modern Sans** for headers and titles automatically. All fonts are system-installed or TeX-distributed — no bundled font files needed.
 
+| Palatino (Modern) | Georgia (Traditional) |
+|:-:|:-:|
+| <img src="figures/font_example_palatino.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
+
 ---
 
 ## What to Edit
