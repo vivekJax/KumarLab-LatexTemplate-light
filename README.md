@@ -7,6 +7,16 @@
 
 ---
 
+## Sample Output
+
+| CM Bright (Modern) | Georgia (Traditional) |
+|:-:|:-:|
+| <img src="figures/preview_cmbright.png" width="340"> | <img src="figures/preview_georgia.png" width="340"> |
+
+Full PDFs: [sample_cmbright.pdf](sample_cmbright.pdf) · [sample_georgia.pdf](sample_georgia.pdf)
+
+---
+
 ## Choose Your Template
 
 ### `jax_main.tex` — Full Paper (Modular)
