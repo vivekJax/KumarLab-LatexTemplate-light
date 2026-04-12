@@ -7,7 +7,7 @@
 \ProvidesPackage{jacksonlab}[2025/04/12 Jackson Laboratory Paper Style — Light]
 
 % Package options
-\DeclareOption{palatino}{\newcommand{\bodyfontchoice}{palatino}}
+\DeclareOption{cmbright}{\newcommand{\bodyfontchoice}{cmbright}}
 \DeclareOption{georgia}{\newcommand{\bodyfontchoice}{georgia}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
@@ -41,31 +41,27 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 
-% Font setup — all system/TeX-distributed fonts, no bundled files
-\setsansfont{lmsans10-regular}[
-    Extension=.otf,
-    BoldFont=lmsans10-bold,
-    ItalicFont=lmsans10-oblique,
-    BoldItalicFont=lmsans10-bold
+% Helvetica for all headers, titles, and UI elements (macOS system font)
+\setsansfont{Helvetica}[
+    BoldFont=Helvetica Bold,
+    ItalicFont=Helvetica Oblique,
+    BoldItalicFont=Helvetica Bold Oblique
 ]
 
-\newcommand{\setuppalatinofont}{\setmainfont{Palatino}}
-\newcommand{\setupgeorgiafont}{\setmainfont{Georgia}}
-
-\newfontfamily\captionfontfamily{Palatino}
-\global\let\captionfontfamily\captionfontfamily
-
 % Apply chosen body font
-\def\palatinofont{palatino}
+\def\cmbrightfont{cmbright}
 \def\georgiafont{georgia}
 \edef\currentfont{\bodyfontchoice}
 \ifx\currentfont\georgiafont
-    \setupgeorgiafont
-    \DeclareCaptionFont{captionfont}{\captionfontfamily}
+    % Georgia — traditional serif via fontspec
+    \setmainfont{Georgia}
+    \newfontfamily\captionfontfamily{Palatino}
+    \global\let\captionfontfamily\captionfontfamily
     \DeclareCaptionFont{captionfont9}{\fontsize{9}{11}\selectfont\captionfontfamily}
     \captionsetup{font=captionfont9,labelfont=bf}
 \else
-    \setuppalatinofont
+    % CM Bright — modern screen-optimised serif via NFSS (no \setmainfont needed)
+    \RequirePackage{cmbright}
 \fi
 
 \AtBeginDocument{\rmfamily}

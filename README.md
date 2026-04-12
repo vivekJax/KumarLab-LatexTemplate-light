@@ -31,7 +31,7 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 
 ### 2. Choose your font
 ```latex
-\usepackage[palatino]{jacksonlab}  % Modern, clean serif (default)
+\usepackage[cmbright]{jacksonlab}  % Modern, screen-optimised serif (default)
 \usepackage[georgia]{jacksonlab}   % Traditional, readable serif
 ```
 
@@ -56,14 +56,14 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 | Font | Style | Best For |
 |------|-------|----------|
-| **Palatino** | Modern, clean serif | Contemporary research papers |
+| **CM Bright** | Modern, screen-optimised serif | Contemporary research papers |
 | **Georgia** | Traditional, readable serif | Classic academic publications |
 
-Both options use **Latin Modern Sans** for headers and titles automatically. All fonts are system-installed or TeX-distributed — no bundled font files needed.
+All headers and titles use **Helvetica**. Body fonts are system-installed or TeX-distributed — no bundled font files needed.
 
-| Palatino (Modern) | Georgia (Traditional) |
+| CM Bright (Modern) | Georgia (Traditional) |
 |:-:|:-:|
-| <img src="figures/font_example_palatino.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
+| <img src="figures/font_example_cmbright.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
 
 ---
 
@@ -239,7 +239,7 @@ Unshaded row & data & data \\
 
 ### Captions with Georgia Font
 
-When using the **Georgia** body font, captions automatically render in **Palatino** at 9pt for visual contrast. No configuration needed.
+When using the **Georgia** body font, captions automatically render in **Palatino** at 9pt for contrast. No configuration needed.
 
 ### Long URLs
 
