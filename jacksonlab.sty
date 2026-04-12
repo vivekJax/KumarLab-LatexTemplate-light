@@ -7,7 +7,7 @@
 \ProvidesPackage{jacksonlab}[2025/04/12 Jackson Laboratory Paper Style — Light]
 
 % Package options
-\DeclareOption{cmbright}{\newcommand{\bodyfontchoice}{cmbright}}
+\DeclareOption{sourcesans}{\newcommand{\bodyfontchoice}{sourcesans}}
 \DeclareOption{georgia}{\newcommand{\bodyfontchoice}{georgia}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
@@ -41,28 +41,35 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
 
-% Helvetica for all headers, titles, and UI elements (macOS system font)
-\setsansfont{Helvetica}[
-    BoldFont=Helvetica Bold,
-    ItalicFont=Helvetica Oblique,
-    BoldItalicFont=Helvetica Bold Oblique
-]
-
 % Apply chosen body font
-\def\cmbrightfont{cmbright}
+\def\sourcesansfont{sourcesans}
 \def\georgiafont{georgia}
 \edef\currentfont{\bodyfontchoice}
 \ifx\currentfont\georgiafont
-    % Georgia — traditional serif via fontspec
+    % Georgia — traditional serif
     \setmainfont{Georgia}
     \newfontfamily\captionfontfamily{Palatino}
     \global\let\captionfontfamily\captionfontfamily
     \DeclareCaptionFont{captionfont9}{\fontsize{9}{11}\selectfont\captionfontfamily}
     \captionsetup{font=captionfont9,labelfont=bf}
 \else
-    % CM Bright — modern screen-optimised serif via NFSS (no \setmainfont needed)
-    \RequirePackage{cmbright}
+    % Source Sans Pro — modern humanist sans-serif
+    \setmainfont{SourceSansPro-Regular}[
+        Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
+        Extension=.otf,
+        BoldFont=SourceSansPro-Semibold,
+        ItalicFont=SourceSansPro-RegularIt,
+        BoldItalicFont=SourceSansPro-SemiboldIt
+    ]
 \fi
+
+% Helvetica for all headers, titles, and UI elements
+% Declared after body font to ensure it is not overridden
+\setsansfont{Helvetica}[
+    BoldFont=Helvetica Bold,
+    ItalicFont=Helvetica Oblique,
+    BoldItalicFont=Helvetica Bold Oblique
+]
 
 \AtBeginDocument{\rmfamily}
 

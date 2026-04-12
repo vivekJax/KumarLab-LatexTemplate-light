@@ -9,11 +9,11 @@
 
 ## Sample Output
 
-| CM Bright (Modern) | Georgia (Traditional) |
+| Source Sans Pro (Modern) | Georgia (Traditional) |
 |:-:|:-:|
-| <img src="figures/preview_cmbright.png" width="340"> | <img src="figures/preview_georgia.png" width="340"> |
+| <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_georgia.png" width="340"> |
 
-Full PDFs: [sample_cmbright.pdf](sample_cmbright.pdf) · [sample_georgia.pdf](sample_georgia.pdf)
+Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_georgia.pdf](sample_georgia.pdf)
 
 ---
 
@@ -41,7 +41,7 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 
 ### 2. Choose your font
 ```latex
-\usepackage[cmbright]{jacksonlab}  % Modern, screen-optimised serif (default)
+\usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif (default)
 \usepackage[georgia]{jacksonlab}   % Traditional, readable serif
 ```
 
@@ -66,14 +66,14 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 | Font | Style | Best For |
 |------|-------|----------|
-| **CM Bright** | Modern, screen-optimised serif | Contemporary research papers |
+| **Source Sans Pro** | Modern humanist sans-serif | Contemporary research papers |
 | **Georgia** | Traditional, readable serif | Classic academic publications |
 
 All headers and titles use **Helvetica**. Body fonts are system-installed or TeX-distributed — no bundled font files needed.
 
-| CM Bright (Modern) | Georgia (Traditional) |
+| Source Sans Pro (Modern) | Georgia (Traditional) |
 |:-:|:-:|
-| <img src="figures/font_example_cmbright.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
+| <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
 
 ---
 
