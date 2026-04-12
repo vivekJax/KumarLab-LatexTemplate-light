@@ -7,8 +7,9 @@
 \ProvidesPackage{jacksonlab}[2025/04/12 Jackson Laboratory Paper Style — Light]
 
 % Package options
-\DeclareOption{sourcesans}{\newcommand{\bodyfontchoice}{sourcesans}}
-\DeclareOption{garamond}{\newcommand{\bodyfontchoice}{garamond}}
+\newcommand{\bodyfontchoice}{garamond}% default
+\DeclareOption{garamond}{\renewcommand{\bodyfontchoice}{garamond}}
+\DeclareOption{sourcesans}{\renewcommand{\bodyfontchoice}{sourcesans}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
 \DeclareOption{10pt}{\PassOptionsToClass{10pt}{article}}

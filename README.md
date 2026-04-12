@@ -41,8 +41,8 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 
 ### 2. Choose your font
 ```latex
-\usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif (default)
-\usepackage[garamond]{jacksonlab}   % Traditional serif (EB Garamond)
+\usepackage[garamond]{jacksonlab}   % Traditional serif (EB Garamond) — default
+\usepackage[sourcesans]{jacksonlab} % Modern humanist sans-serif
 ```
 
 ### 3. Compile
