@@ -15,7 +15,7 @@
 # Compiled PDFs (compile locally, don't commit)
 *.pdf
 !sample_sourcesans.pdf
-!sample_georgia.pdf
+!sample_termes.pdf
 
 # OS files
 .DS_Store

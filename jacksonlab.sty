@@ -8,7 +8,7 @@
 
 % Package options
 \DeclareOption{sourcesans}{\newcommand{\bodyfontchoice}{sourcesans}}
-\DeclareOption{georgia}{\newcommand{\bodyfontchoice}{georgia}}
+\DeclareOption{termes}{\newcommand{\bodyfontchoice}{termes}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
 \DeclareOption{10pt}{\PassOptionsToClass{10pt}{article}}
@@ -43,9 +43,9 @@
 
 % Apply chosen body font
 \def\sourcesansfont{sourcesans}
-\def\georgiafont{georgia}
+\def\termesfont{termes}
 \edef\currentfont{\bodyfontchoice}
-\ifx\currentfont\georgiafont
+\ifx\currentfont\termesfont
     % TeX Gyre Termes — traditional serif (Times-based, cross-platform)
     \setmainfont{texgyretermes-regular.otf}[
         BoldFont=texgyretermes-bold.otf,

@@ -11,9 +11,9 @@
 
 | Source Sans Pro (Modern) | TeX Gyre Termes (Traditional) |
 |:-:|:-:|
-| <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_georgia.png" width="340"> |
+| <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_termes.png" width="340"> |
 
-Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_georgia.pdf](sample_georgia.pdf)
+Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_termes.pdf](sample_termes.pdf)
 
 ---
 
@@ -42,7 +42,7 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 ### 2. Choose your font
 ```latex
 \usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif (default)
-\usepackage[georgia]{jacksonlab}   % Traditional serif (TeX Gyre Termes, Times-based)
+\usepackage[termes]{jacksonlab}    % Traditional serif (TeX Gyre Termes, Times-based)
 ```
 
 ### 3. Compile
@@ -73,7 +73,7 @@ All headers and titles use **TeX Gyre Heros** (Helvetica clone). All fonts ship 
 
 | Source Sans Pro (Modern) | TeX Gyre Termes (Traditional) |
 |:-:|:-:|
-| <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
+| <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_termes.png" width="400"> |
 
 ---
 
@@ -249,7 +249,7 @@ Unshaded row & data & data \\
 
 ### Captions with TeX Gyre Termes
 
-When using the **TeX Gyre Termes** body font (`georgia` option), captions automatically render in **TeX Gyre Pagella** (Palatino-based) at 9pt for contrast. No configuration needed.
+When using the **TeX Gyre Termes** body font (`termes` option), captions automatically render in **TeX Gyre Pagella** (Palatino-based) at 9pt for contrast. No configuration needed.
 
 ### Long URLs
 
