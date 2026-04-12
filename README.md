@@ -9,7 +9,7 @@
 
 ## Sample Output
 
-| Source Sans Pro (Modern) | Georgia (Traditional) |
+| Source Sans Pro (Modern) | TeX Gyre Termes (Traditional) |
 |:-:|:-:|
 | <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_georgia.png" width="340"> |
 
@@ -42,7 +42,7 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 ### 2. Choose your font
 ```latex
 \usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif (default)
-\usepackage[georgia]{jacksonlab}   % Traditional, readable serif
+\usepackage[georgia]{jacksonlab}   % Traditional serif (TeX Gyre Termes, Times-based)
 ```
 
 ### 3. Compile
