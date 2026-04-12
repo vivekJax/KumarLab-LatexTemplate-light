@@ -5,4 +5,4 @@ echo "Watching jax_main.tex for changes..."
 echo "Press Ctrl+C to stop"
 echo ""
 
-ls jax_main.tex | entr -r /Library/TeX/texbin/xelatex jax_main.tex
+ls jax_main.tex | entr -r xelatex jax_main.tex

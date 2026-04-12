@@ -1,7 +1,7 @@
 # Jackson Laboratory Paper Template
 
 **Created by: Kumar Lab, The Jackson Laboratory**
-**GitHub: https://github.com/KumarLabJax/KumarLab-LatexTemplate**
+**GitHub: https://github.com/vivekJax/KumarLab-LatexTemplate-light**
 
 **License**: Proprietary — Jackson Laboratory use only (see LICENSE)
 
@@ -71,7 +71,7 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 All headers and titles use **TeX Gyre Heros** (Helvetica clone). All fonts ship with TeX Live — no system fonts or bundled files needed. Works on Windows, Linux, and macOS.
 
-| Source Sans Pro (Modern) | Georgia (Traditional) |
+| Source Sans Pro (Modern) | TeX Gyre Termes (Traditional) |
 |:-:|:-:|
 | <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_georgia.png" width="400"> |
 
@@ -208,7 +208,7 @@ Run `./scripts/compile_with_bibtex.sh` after adding new references.
 ### Font Sizes
 Edit `jacksonlab.sty`:
 ```latex
-\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
+\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\sffamily}
 % Change 20 to 18 (smaller) or 22 (larger)
 ```
 
@@ -247,9 +247,9 @@ Unshaded row & data & data \\
 - `\gr` — gray shading for alternating rows
 - `\mytablewidth` — consistent width matching page margins
 
-### Captions with Georgia Font
+### Captions with TeX Gyre Termes
 
-When using the **Georgia** body font, captions automatically render in **Palatino** at 9pt for contrast. No configuration needed.
+When using the **TeX Gyre Termes** body font (`georgia` option), captions automatically render in **TeX Gyre Pagella** (Palatino-based) at 9pt for contrast. No configuration needed.
 
 ### Long URLs
 
