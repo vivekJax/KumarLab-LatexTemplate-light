@@ -9,11 +9,11 @@
 
 ## Sample Output
 
-| Source Sans Pro (Modern) | EB Garamond (Traditional) |
+| EB Garamond (Traditional — default) | Source Sans Pro (Modern) |
 |:-:|:-:|
-| <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_garamond.png" width="340"> |
+| <img src="figures/preview_garamond.png" width="340"> | <img src="figures/preview_sourcesans.png" width="340"> |
 
-Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_garamond.pdf](sample_garamond.pdf)
+Full PDFs: [sample_garamond.pdf](sample_garamond.pdf) · [sample_sourcesans.pdf](sample_sourcesans.pdf)
 
 ---
 
@@ -66,14 +66,14 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 | Font | Option | Style | Best For |
 |------|--------|-------|----------|
+| **EB Garamond** | `garamond` | Classic humanist serif | Traditional academic publications — **default** |
 | **Source Sans Pro** | `sourcesans` | Modern humanist sans-serif | Contemporary research papers |
-| **EB Garamond** | `garamond` | Classic humanist serif | Traditional academic publications |
 
 All headers and titles use **TeX Gyre Heros** (Helvetica clone). All fonts ship with TeX Live — no system fonts or bundled files needed. Works on Windows, Linux, and macOS.
 
-| Source Sans Pro (Modern) | EB Garamond (Traditional) |
+| EB Garamond (Traditional) | Source Sans Pro (Modern) |
 |:-:|:-:|
-| <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_garamond.png" width="400"> |
+| <img src="figures/font_example_garamond.png" width="400"> | <img src="figures/font_example_sourcesans.png" width="400"> |
 
 ---
 
@@ -197,7 +197,7 @@ Run `./scripts/compile_with_bibtex.sh` after adding new references.
 |---------|----------|
 | Fonts look wrong | Make sure you're using `xelatex`, not `pdflatex` |
 | References show [?] | Run `./scripts/compile_with_bibtex.sh` |
-| "spawn xelatex ENOENT" in VS Code | Scripts use full path `/Library/TeX/texbin/xelatex` |
+| `xelatex: command not found` | Add TeX Live to your PATH (e.g. `export PATH=/usr/local/texlive/2025/bin/x86_64-linux:$PATH`) |
 | Permission denied on scripts | Run `chmod +x scripts/*.sh` |
 | Style not loading | Make sure `jacksonlab.sty` is in the same folder as your `.tex` file |
 
@@ -267,3 +267,21 @@ Your paragraph with a long \url{https://example.com/very/long/path} here.
 ### Recommended Extensions
 1. **LaTeX Workshop** — LaTeX support, auto-compilation, PDF preview
 2. **BibTeX Language Support** — Syntax highlighting for `.bib` files
+
+### LaTeX Workshop Settings
+Add to your `settings.json` to use XeLaTeX:
+```json
+"latex-workshop.latex.tools": [
+  {
+    "name": "xelatex",
+    "command": "xelatex",
+    "args": ["-interaction=nonstopmode", "-synctex=1", "%DOC%"]
+  }
+],
+"latex-workshop.latex.recipes": [
+  {
+    "name": "xelatex + bibtex",
+    "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+  }
+]
+```
