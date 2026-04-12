@@ -42,7 +42,12 @@
 \setlength{\parskip}{6pt}
 
 % Font setup — all system/TeX-distributed fonts, no bundled files
-\setsansfont{Latin Modern Sans}
+\setsansfont{lmsans10-regular}[
+    Extension=.otf,
+    BoldFont=lmsans10-bold,
+    ItalicFont=lmsans10-oblique,
+    BoldItalicFont=lmsans10-bold
+]
 
 \newcommand{\setuppalatinofont}{\setmainfont{Palatino}}
 \newcommand{\setupgeorgiafont}{\setmainfont{Georgia}}

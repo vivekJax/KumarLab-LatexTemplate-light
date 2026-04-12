@@ -14,6 +14,7 @@
 
 # Compiled PDFs (compile locally, don't commit)
 *.pdf
+!sample.pdf
 
 # OS files
 .DS_Store
