@@ -54,12 +54,11 @@
     \captionsetup{font=captionfont9,labelfont=bf}
 \else
     % Source Sans Pro — modern humanist sans-serif
-    \setmainfont{SourceSansPro-Regular}[
-        Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/adobe/sourcesanspro/,
-        Extension=.otf,
-        BoldFont=SourceSansPro-Semibold,
-        ItalicFont=SourceSansPro-RegularIt,
-        BoldItalicFont=SourceSansPro-SemiboldIt
+    % Ships with TeX Live; found via kpathsea, no hardcoded path needed
+    \setmainfont{SourceSansPro-Regular.otf}[
+        BoldFont=SourceSansPro-Semibold.otf,
+        ItalicFont=SourceSansPro-RegularIt.otf,
+        BoldItalicFont=SourceSansPro-SemiboldIt.otf
     ]
 \fi
 
