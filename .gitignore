@@ -14,8 +14,7 @@
 
 # Compiled PDFs (compile locally, don't commit)
 *.pdf
-!sample.pdf
-!sample_cmbright.pdf
+!sample_sourcesans.pdf
 !sample_georgia.pdf
 
 # OS files
