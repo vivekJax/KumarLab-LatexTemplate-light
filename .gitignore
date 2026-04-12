@@ -16,7 +16,6 @@
 *.pdf
 !sample_sourcesans.pdf
 !sample_garamond.pdf
-!sample_termes.pdf
 
 # OS files
 .DS_Store

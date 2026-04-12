@@ -9,11 +9,11 @@
 
 ## Sample Output
 
-| Source Sans Pro (Modern) | EB Garamond (Traditional) | TeX Gyre Termes (Traditional) |
-|:-:|:-:|:-:|
-| <img src="figures/preview_sourcesans.png" width="220"> | <img src="figures/preview_garamond.png" width="220"> | <img src="figures/preview_termes.png" width="220"> |
+| Source Sans Pro (Modern) | EB Garamond (Traditional) |
+|:-:|:-:|
+| <img src="figures/preview_sourcesans.png" width="340"> | <img src="figures/preview_garamond.png" width="340"> |
 
-Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_garamond.pdf](sample_garamond.pdf) · [sample_termes.pdf](sample_termes.pdf)
+Full PDFs: [sample_sourcesans.pdf](sample_sourcesans.pdf) · [sample_garamond.pdf](sample_garamond.pdf)
 
 ---
 
@@ -41,9 +41,8 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 
 ### 2. Choose your font
 ```latex
-\usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif
-\usepackage[garamond]{jacksonlab}   % Traditional serif (EB Garamond) — recommended
-\usepackage[termes]{jacksonlab}     % Traditional serif (TeX Gyre Termes, Times-based)
+\usepackage[sourcesans]{jacksonlab}  % Modern humanist sans-serif (default)
+\usepackage[garamond]{jacksonlab}   % Traditional serif (EB Garamond)
 ```
 
 ### 3. Compile
@@ -69,13 +68,12 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 |------|--------|-------|----------|
 | **Source Sans Pro** | `sourcesans` | Modern humanist sans-serif | Contemporary research papers |
 | **EB Garamond** | `garamond` | Classic humanist serif | Traditional academic publications |
-| **TeX Gyre Termes** | `termes` | Times-based serif | Journals requiring Times New Roman |
 
 All headers and titles use **TeX Gyre Heros** (Helvetica clone). All fonts ship with TeX Live — no system fonts or bundled files needed. Works on Windows, Linux, and macOS.
 
-| Source Sans Pro | EB Garamond | TeX Gyre Termes |
-|:-:|:-:|:-:|
-| <img src="figures/font_example_sourcesans.png" width="270"> | <img src="figures/font_example_garamond.png" width="270"> | <img src="figures/font_example_termes.png" width="270"> |
+| Source Sans Pro (Modern) | EB Garamond (Traditional) |
+|:-:|:-:|
+| <img src="figures/font_example_sourcesans.png" width="400"> | <img src="figures/font_example_garamond.png" width="400"> |
 
 ---
 
@@ -251,7 +249,7 @@ Unshaded row & data & data \\
 
 ### Captions
 
-For the `garamond` option, captions render in **EB Garamond** at 9pt. For the `termes` option, captions render in **TeX Gyre Pagella** (Palatino-based) at 9pt for contrast. No configuration needed in either case.
+When using the `garamond` option, captions render in **EB Garamond** at 9pt. No configuration needed.
 
 ### Long URLs
 
