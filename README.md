@@ -67,9 +67,9 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 | Font | Style | Best For |
 |------|-------|----------|
 | **Source Sans Pro** | Modern humanist sans-serif | Contemporary research papers |
-| **Georgia** | Traditional, readable serif | Classic academic publications |
+| **TeX Gyre Termes** | Traditional, readable serif (Times-based) | Classic academic publications |
 
-All headers and titles use **Helvetica**. Body fonts are system-installed or TeX-distributed — no bundled font files needed.
+All headers and titles use **TeX Gyre Heros** (Helvetica clone). All fonts ship with TeX Live — no system fonts or bundled files needed. Works on Windows, Linux, and macOS.
 
 | Source Sans Pro (Modern) | Georgia (Traditional) |
 |:-:|:-:|

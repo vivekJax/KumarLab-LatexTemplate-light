@@ -46,9 +46,18 @@
 \def\georgiafont{georgia}
 \edef\currentfont{\bodyfontchoice}
 \ifx\currentfont\georgiafont
-    % Georgia — traditional serif
-    \setmainfont{Georgia}
-    \newfontfamily\captionfontfamily{Palatino}
+    % TeX Gyre Termes — traditional serif (Times-based, cross-platform)
+    \setmainfont{texgyretermes-regular.otf}[
+        BoldFont=texgyretermes-bold.otf,
+        ItalicFont=texgyretermes-italic.otf,
+        BoldItalicFont=texgyretermes-bolditalic.otf
+    ]
+    % Captions in TeX Gyre Pagella (Palatino-based) at 9pt for contrast
+    \newfontfamily\captionfontfamily{texgyrepagella-regular.otf}[
+        BoldFont=texgyrepagella-bold.otf,
+        ItalicFont=texgyrepagella-italic.otf,
+        BoldItalicFont=texgyrepagella-bolditalic.otf
+    ]
     \global\let\captionfontfamily\captionfontfamily
     \DeclareCaptionFont{captionfont9}{\fontsize{9}{11}\selectfont\captionfontfamily}
     \captionsetup{font=captionfont9,labelfont=bf}
@@ -62,12 +71,13 @@
     ]
 \fi
 
-% Helvetica for all headers, titles, and UI elements
+% TeX Gyre Heros for all headers, titles, and UI elements
+% Helvetica clone — ships with every TeX Live installation
 % Declared after body font to ensure it is not overridden
-\setsansfont{Helvetica}[
-    BoldFont=Helvetica Bold,
-    ItalicFont=Helvetica Oblique,
-    BoldItalicFont=Helvetica Bold Oblique
+\setsansfont{texgyreheros-regular.otf}[
+    BoldFont=texgyreheros-bold.otf,
+    ItalicFont=texgyreheros-italic.otf,
+    BoldItalicFont=texgyreheros-bolditalic.otf
 ]
 
 \AtBeginDocument{\rmfamily}
