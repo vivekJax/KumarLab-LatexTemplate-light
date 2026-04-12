@@ -1,303 +1,106 @@
-% =============================================================================
-% JACKSON LABORATORY STYLE FILE
-% =============================================================================
-% 
+% Jackson Laboratory Style File
 % Copyright (c) 2025 The Jackson Laboratory. All rights reserved.
-% PROPRIETARY SOFTWARE - JACKSON LABORATORY USE ONLY
-% 
 % Created by: Kumar Lab, The Jackson Laboratory
-% GitHub: https://github.com/kumarlabjax/LaTeX-Template
-% 
-% Licensed under:
-% - Proprietary License (see LICENSE)
-% - Creative Commons BY-NC-ND 4.0 (see LICENSE_CC.md)
-% 
-% Professional formatting package for Jackson Lab papers
-% Usage: \usepackage{jacksonlab}
-% 
-% This package provides:
-%   - Professional font configurations (Whitney/Whitman)
-%   - Custom title page formatting
-%   - Section and subsection styling
-%   - Bibliography formatting
-%   - Hyperlink configuration
-% 
-% UNAUTHORIZED USE IS PROHIBITED
-% 
-% =============================================================================
+% Licensed under Proprietary License (see LICENSE)
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{jacksonlab}[2024/12/19 Jackson Laboratory Paper Style]
+\ProvidesPackage{jacksonlab}[2025/04/12 Jackson Laboratory Paper Style — Light]
 
-% =============================================================================
-% PACKAGE OPTIONS
-% =============================================================================
-
-% Font choice option
-\DeclareOption{whitney}{\newcommand{\bodyfontchoice}{whitney}}
-\DeclareOption{whitman}{\newcommand{\bodyfontchoice}{whitman}}
-\DeclareOption{whitney}{\newcommand{\bodyfontchoice}{whitney}}
-
-% Page layout options
+% Package options
+\DeclareOption{palatino}{\newcommand{\bodyfontchoice}{palatino}}
+\DeclareOption{georgia}{\newcommand{\bodyfontchoice}{georgia}}
 \DeclareOption{twocolumn}{\PassOptionsToClass{twocolumn}{article}}
 \DeclareOption{onecolumn}{\PassOptionsToClass{onecolumn}{article}}
-
-% Font size options
 \DeclareOption{10pt}{\PassOptionsToClass{10pt}{article}}
 \DeclareOption{11pt}{\PassOptionsToClass{11pt}{article}}
 \DeclareOption{12pt}{\PassOptionsToClass{12pt}{article}}
-
-% Process options
 \ProcessOptions\relax
 
-% =============================================================================
-% REQUIRED PACKAGES
-% =============================================================================
+% Required packages
+\RequirePackage{fontspec}
+\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{graphicx}
+\RequirePackage[hyphens]{url}
+\RequirePackage{cite}
+\RequirePackage{geometry}
+\RequirePackage{booktabs}
+\RequirePackage{hyperref}
+\RequirePackage{doi}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{multirow}
+\RequirePackage{array}
+\RequirePackage{subcaption}
+\RequirePackage{caption}
+\RequirePackage[table]{xcolor}
+\RequirePackage[most]{tcolorbox}
 
-% Essential packages for fonts and text
-\RequirePackage{fontspec}           % Custom fonts
-\RequirePackage{amsmath,amsfonts,amssymb}  % Math symbols
-\RequirePackage{graphicx}           % Images
-\RequirePackage[hyphens]{url}        % Web links (hyphens allows URL line breaking)
-\RequirePackage{cite}               % Citations
-\RequirePackage{geometry}           % Page layout
-\RequirePackage{booktabs}            % Professional tables
-\RequirePackage{algorithm}           % Algorithm blocks
-\RequirePackage{algorithmic}         % Algorithm pseudocode
-\RequirePackage{hyperref}            % Clickable links
-\RequirePackage{doi}                 % Clickable DOIs in bibliography
-\RequirePackage{fancyhdr}            % Headers and footers
-\RequirePackage{titlesec}            % Section titles
-\RequirePackage{enumitem}            % Lists
-\RequirePackage{multirow}            % Table cells
-\RequirePackage{array}               % Table formatting
-\RequirePackage{subcaption}          % Subfigures
-\RequirePackage{caption}             % Caption font/size control
-\RequirePackage[table]{xcolor}       % Colors
-\RequirePackage{listings}            % Code blocks
-\RequirePackage[most]{tcolorbox}      % Enhanced colored boxes with page breaking
-\RequirePackage{tikz}                % Graphics
-\RequirePackage{environ}             % Advanced environments
-\RequirePackage{tabularray}          % Advanced tables
-\UseTblrLibrary{booktabs}           % Booktabs library
-\RequirePackage{sansmath}            % Sans-serif math
-\RequirePackage{mdframed}            % Framed environments with page breaking
-
-% =============================================================================
-% PAGE SETUP
-% =============================================================================
-
-% Set page geometry: letter paper size, 1 inch margins on all sides
+% Page setup
 \geometry{letterpaper, margin=1in}
-
-% Remove paragraph indentation (no indented first lines)
 \setlength{\parindent}{0pt}
-
-% Add 6 points of space between paragraphs
 \setlength{\parskip}{6pt}
 
-% =============================================================================
-% FONT SETUP
-% =============================================================================
+% Font setup — all system/TeX-distributed fonts, no bundled files
+\setsansfont{Latin Modern Sans}
 
-% Configure DIN Next LT Pro as sans-serif font (Jackson Lab's preferred font)
-% This font is used for headers, titles, and UI elements
-\setsansfont{DINNextLTPro}[
-    Path=Fonts/DIN/,
-    Extension = .otf,
-    UprightFont=DINNextLTPro-Regular,
-    BoldFont=DINNextLTPro-Bold,
-    ItalicFont=DINNextLTPro-Italic,
-    BoldItalicFont=DINNextLTPro-BoldItalic
-]
+\newcommand{\setuppalatinofont}{\setmainfont{Palatino}}
+\newcommand{\setupgeorgiafont}{\setmainfont{Georgia}}
 
-% Set up Whitney font configuration
-\newcommand{\setupwhitneyfont}{%
-    \setmainfont{Whitney}[
-        Path=Fonts/Whitney/,
-        Extension = .otf,
-        UprightFont=Whitney-Book,
-        BoldFont=Whitney-Bold,
-        ItalicFont=Whitney-BookItalic,
-        BoldItalicFont=Whitney-BoldItalic
-    ]
-}
+\newfontfamily\captionfontfamily{Palatino}
+\global\let\captionfontfamily\captionfontfamily
 
-% Set up Whitman font configuration
-\newcommand{\setupwhitmanfont}{%
-    \setmainfont{Whitman}[
-        Path=Fonts/Whitman/,
-        Extension = .ttf,
-        UprightFont=Whitman-RomanLF,
-        BoldFont=Whitman-BoldLF,
-        ItalicFont=Whitman-ItalicLF,
-        BoldItalicFont=Whitman-BoldLF
-    ]
-}
-
-% Whitney as a named font family for caption use when body font is Whitman
-\newfontfamily\whitneycaptionfont{Whitney}[
-    Path=Fonts/Whitney/,
-    Extension = .otf,
-    UprightFont=Whitney-Book,
-    BoldFont=Whitney-Bold,
-    ItalicFont=Whitney-BookItalic,
-    BoldItalicFont=Whitney-BoldItalic
-]
-\global\let\whitneycaptionfont\whitneycaptionfont
-
-% Apply the chosen font configuration
-\def\whitneyfont{whitney}
-\def\whitmanfont{whitman}
+% Apply chosen body font
+\def\palatinofont{palatino}
+\def\georgiafont{georgia}
 \edef\currentfont{\bodyfontchoice}
-\ifx\currentfont\whitmanfont
-    \setupwhitmanfont
-    % Figure/table captions in Whitney at 9pt (matches abstract size); bold labels
-    \DeclareCaptionFont{captionwhitney}{\whitneycaptionfont}
-    \DeclareCaptionFont{captionwhitney9}{\fontsize{9}{11}\selectfont\whitneycaptionfont}
-    \captionsetup{font=captionwhitney9,labelfont=bf}
+\ifx\currentfont\georgiafont
+    \setupgeorgiafont
+    \DeclareCaptionFont{captionfont}{\captionfontfamily}
+    \DeclareCaptionFont{captionfont9}{\fontsize{9}{11}\selectfont\captionfontfamily}
+    \captionsetup{font=captionfont9,labelfont=bf}
 \else
-    \ifx\currentfont\whitneyfont
-        \setupwhitneyfont
-    \else
-        \setupwhitneyfont % Default fallback
-    \fi
+    \setuppalatinofont
 \fi
 
-% =============================================================================
-% FONT COMMANDS
-% =============================================================================
+\AtBeginDocument{\rmfamily}
 
-% Smart font command: uses sans-serif font (DIN or Helvetica) for headers
-\newcommand{\smartfont}[1]{%
-    \sffamily #1%
+% Font commands
+\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\sffamily}
+\newcommand{\titletext}[2]{{\titlefont\raggedright #1 \\[0.1in] #2}}
+\newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\sffamily}
+\newcommand{\affiliationfont}{\fontsize{10}{12}\selectfont\sffamily}
+\newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\sffamily}
+\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\sffamily\linespread{1.22}\selectfont}
+\newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\sffamily}
+\newcommand{\metadatatextfont}{\fontsize{8}{10}\selectfont\sffamily}
+\newcommand{\sectionfont}{\fontsize{16}{18}\selectfont\bfseries\sffamily}
+\newcommand{\subsectionfont}{\fontsize{14}{16}\selectfont\bfseries\sffamily}
+
+% Title page box
+\newtcolorbox{titlebox}{
+    colback=gray!10, colframe=gray!10, boxrule=0pt, arc=8pt,
+    left=20pt, right=20pt, top=20pt, bottom=20pt,
+    width=\textwidth
 }
 
-% Body text font command: uses serif font (Whitney or Times New Roman)
-\newcommand{\bodyfont}[1]{%
-    \rmfamily #1%
-}
-
-% Ensure document body uses serif font by default
-\AtBeginDocument{%
-    \rmfamily
-}
-
-% Title font: 20pt, bold, smart font (DIN or Helvetica)
-\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
-
-% Title command with proper line spacing
-\newcommand{\titletext}[2]{%
-    {\titlefont\raggedright #1 \\[0.1in] #2}%
-}
-
-% Author font: 10pt, bold, smart font
-\newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
-
-% Affiliation font: 10pt, regular, smart font
-\newcommand{\affiliationfont}{\fontsize{10}{12}\selectfont\smartfont}
-
-% Abstract heading font: 10pt, bold, smart font
-\newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\smartfont}
-
-% Abstract text font: 9pt, regular, smart font
-\newcommand{\abstractfont}{\fontsize{9}{11}\selectfont\smartfont\linespread{1.22}\selectfont}
-
-% Abstract gray box definition
-% This creates a gray box around the abstract that can break across pages
-\newtcolorbox{abstractbox}{
-    colback=gray!10,           % Light gray background
-    colframe=gray!30,          % Gray border
-    boxrule=0.5pt,             % Border thickness
-    arc=2pt,                   % Rounded corners
-    left=8pt,                   % Left margin inside box
-    right=8pt,                  % Right margin inside box
-    top=8pt,                    % Top margin inside box
-    bottom=8pt,                 % Bottom margin inside box
-    before skip=0.1in,          % Space before the box
-    after skip=0.2in,           % Space after the box
-    % Note: Basic tcolorbox doesn't support page breaking
-    % For very long abstracts, consider using a simpler approach
-}
-
-% Simple gray background for long abstracts
-% This provides a gray background that can break across pages
-% Note: This is a simple solution that works for most cases
-% For very long abstracts, the gray background will extend to the next page
-
-% Metadata labels font: 8pt, bold, smart font (for "Code:", "Date:", etc.)
-\newcommand{\metadatalabelfont}{\fontsize{8}{10}\selectfont\bfseries\smartfont}
-
-% Metadata text font: 8pt, regular, smart font (for actual values)
-\newcommand{\metadatatextfont}{\fontsize{8}{10}\selectfont\smartfont}
-
-% Section title font: 16pt, bold, smart font
-\newcommand{\sectionfont}{\fontsize{16}{18}\selectfont\bfseries\smartfont}
-
-% Subsection title font: 14pt, bold, smart font
-\newcommand{\subsectionfont}{\fontsize{14}{16}\selectfont\bfseries\smartfont}
-
-% =============================================================================
-% TABLE FORMATTING
-% =============================================================================
-
-% Table width: slightly narrower than text so row shading aligns with booktabs rules
+% Table formatting
 \newlength{\mytablewidth}
 \setlength{\mytablewidth}{\dimexpr\textwidth-12pt\relax}
-
-% Gray row shading command: use \gr at the start of alternating rows
 \newcommand{\gr}{\rowcolor{gray!15}}
-
-% Custom column type L{width}:
-% - Left-aligned, vertically centered, with 2.5pt internal padding
-% - Hanging indent on wrapped lines
-% - Use with \setlength{\tabcolsep}{0pt} for seamless row color
 \newcolumntype{L}[1]{>{\hspace{2.5pt}\setlength{\hangindent}{2.5pt}\setlength{\hangafter}{1}\raggedright\arraybackslash}m{#1}<{\hspace{2.5pt}}}
 
-% =============================================================================
-% GREY BOX FOR TITLE PAGE
-% =============================================================================
-
-% Create a grey box with rounded corners for the title page
-\newtcolorbox{titlebox}{
-    colback=gray!10,        % Light grey background
-    colframe=gray!10,       % Light grey border (same as background)
-    boxrule=0pt,            % No visible border
-    arc=8pt,                % Rounded corners (8 points radius)
-    left=20pt,              % Left margin inside box
-    right=20pt,             % Right margin inside box
-    top=20pt,               % Top margin inside box
-    bottom=20pt,            % Bottom margin inside box
-    width=\textwidth        % Box width matches page width
-}
-
-% =============================================================================
-% SECTION FORMATTING
-% =============================================================================
-
-% Format section titles with custom font
+% Section formatting
 \titleformat{\section}{\sectionfont}{\thesection}{1em}{}
-
-% Format subsection titles with custom font; [hang] allows long titles to wrap
 \titleformat{\subsection}[hang]{\subsectionfont}{\thesubsection}{1em}{\raggedright}
+\titleformat{\subsubsection}{\small\bfseries\sffamily}{\thesubsubsection}{1em}{}
 
-% Format subsubsection titles with custom font
-\titleformat{\subsubsection}{\small\bfseries\smartfont}{\thesubsubsection}{1em}{}
-
-% =============================================================================
-% HYPERLINK SETUP
-% =============================================================================
-
-% Configure hyperlinks to be blue and clickable
+% Hyperlink setup
 \hypersetup{
-    colorlinks=true,        % Make links colored instead of boxed
-    linkcolor=blue,         % Internal links (like table of contents) are blue
-    urlcolor=blue,          % URLs are blue
-    citecolor=blue          % Citations are blue
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
 }
-
-% =============================================================================
-% END OF PACKAGE
-% =============================================================================
 
 \endinput

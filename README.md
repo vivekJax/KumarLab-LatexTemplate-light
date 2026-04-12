@@ -3,8 +3,7 @@
 **Created by: Kumar Lab, The Jackson Laboratory**
 **GitHub: https://github.com/KumarLabJax/KumarLab-LatexTemplate**
 
-**License**: Dual license system (Proprietary + Creative Commons BY-NC-ND 4.0)
-**Restrictions**: Jackson Laboratory use only - see LICENSE files for details
+**License**: Proprietary — Jackson Laboratory use only (see LICENSE)
 
 ---
 
@@ -32,8 +31,8 @@ Both templates use `jacksonlab.sty` for formatting, so they look identical in th
 
 ### 2. Choose your font
 ```latex
-\usepackage[whitney]{jacksonlab}  % Modern, clean serif
-\usepackage[whitman]{jacksonlab}  % Traditional, readable serif
+\usepackage[palatino]{jacksonlab}  % Modern, clean serif (default)
+\usepackage[georgia]{jacksonlab}   % Traditional, readable serif
 ```
 
 ### 3. Compile
@@ -57,16 +56,10 @@ Open `jax_main.pdf` (or `jax_simple.pdf`) to see your paper.
 
 | Font | Style | Best For |
 |------|-------|----------|
-| **Whitney** | Modern, clean serif | Contemporary research papers |
-| **Whitman** | Traditional, readable serif | Classic academic publications |
+| **Palatino** | Modern, clean serif | Contemporary research papers |
+| **Georgia** | Traditional, readable serif | Classic academic publications |
 
-Both options use **DIN Next LT Pro** for headers and titles automatically.
-
-### Font Examples
-
-| Whitney (Modern) | Whitman (Traditional) |
-|:-:|:-:|
-| <img src="figures/font_example_whitney.png" width="400"> | <img src="figures/font_example_whitman.png" width="400"> |
+Both options use **Latin Modern Sans** for headers and titles automatically. All fonts are system-installed or TeX-distributed — no bundled font files needed.
 
 ---
 
@@ -117,19 +110,11 @@ Your Project/
 ├── 05_supplement.tex         # Supplement (used by jax_main.tex)
 ├── references.bib            # Bibliography
 ├── figures/                  # Figures folder
-│   ├── JAX logo.png
-│   └── test_figure.tex
-├── Fonts/                    # Font files
-│   ├── DIN/                  # DIN Next LT Pro (headers)
-│   ├── Whitney/              # Whitney (body text option)
-│   └── Whitman/              # Whitman (body text option)
-├── scripts/                  # Compilation scripts
-│   ├── compile_simple.sh
-│   ├── compile_with_bibtex.sh
-│   └── watch_latex.sh
-└── docs/                     # Documentation
-    ├── USER_GUIDE.md
-    └── COMPARISON.md
+│   └── JAX logo.png
+└── scripts/                  # Compilation scripts
+    ├── compile_simple.sh
+    ├── compile_with_bibtex.sh
+    └── watch_latex.sh
 ```
 
 ---
@@ -204,15 +189,67 @@ Run `./scripts/compile_with_bibtex.sh` after adding new references.
 
 ---
 
+## Customization
+
+### Font Sizes
+Edit `jacksonlab.sty`:
+```latex
+\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\smartfont}
+% Change 20 to 18 (smaller) or 22 (larger)
+```
+
+### Title Box Colors
+Edit `jacksonlab.sty`:
+```latex
+\newtcolorbox{titlebox}{
+    colback=gray!10,  % Change to white, blue!10, etc.
+```
+
+### Tables
+
+The template provides table helpers: gray alternating rows, left-aligned cells with hanging indent.
+
+```latex
+\begin{table}[h!]
+\centering
+\begin{minipage}{\mytablewidth}
+\centering
+\sffamily\small
+{\setlength{\tabcolsep}{0pt}%
+\begin{tabular}{@{}L{3cm}L{2.5cm}L{\dimexpr\mytablewidth-3cm-2.5cm\relax}@{}}
+\toprule
+\textbf{Col 1} & \textbf{Col 2} & \textbf{Col 3} \\
+\midrule
+\gr Shaded row & data & data \\
+Unshaded row & data & data \\
+\bottomrule
+\end{tabular}}
+\end{minipage}
+\caption{Your caption.}
+\end{table}
+```
+
+- `L{width}` — left-aligned column with hanging indent on wrap
+- `\gr` — gray shading for alternating rows
+- `\mytablewidth` — consistent width matching page margins
+
+### Captions with Georgia Font
+
+When using the **Georgia** body font, captions automatically render in **Palatino** at 9pt for visual contrast. No configuration needed.
+
+### Long URLs
+
+If a paragraph with a long URL overflows, wrap it:
+```latex
+\begin{sloppypar}
+Your paragraph with a long \url{https://example.com/very/long/path} here.
+\end{sloppypar}
+```
+
+---
+
 ## VS Code / Cursor Setup
 
 ### Recommended Extensions
 1. **LaTeX Workshop** — LaTeX support, auto-compilation, PDF preview
 2. **BibTeX Language Support** — Syntax highlighting for `.bib` files
-
-### Compile with VS Code
-1. Press **F5** or click the play button
-2. Select your compilation option
-3. PDF is generated automatically
-
-See `docs/USER_GUIDE.md` for detailed instructions.
