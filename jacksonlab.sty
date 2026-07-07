@@ -83,8 +83,23 @@
 \AtBeginDocument{\rmfamily}
 
 % Font commands
-\newcommand{\titlefont}{\fontsize{20}{28}\selectfont\bfseries\sffamily}
-\newcommand{\titletext}[2]{{\titlefont\raggedright #1 \\[0.1in] #2}}
+% ---- Title spacing --------------------------------------------------------
+% Title is 20pt bold sans with a 28pt base line height (\titlebaseleading).
+% \titlelinegap is the EXTRA space added AFTER EVERY line of the title —
+% including the lines that automatic word-wrap creates, not just the break
+% between the two \titletext arguments. Adjust these two values to taste:
+%   - \titlelinegap      : extra breathing room after each line (0pt = none)
+%   - \titlebaseleading  : base baseline-to-baseline height for the 20pt title
+% Effective leading = \titlebaseleading + \titlelinegap, applied to all lines.
+\newlength{\titlelinegap}     \setlength{\titlelinegap}{0.1in}
+\newlength{\titlebaseleading} \setlength{\titlebaseleading}{28pt}
+\newcommand{\titlefont}{%
+  \fontsize{20}{\dimexpr \titlebaseleading + \titlelinegap\relax}%
+  \selectfont\bfseries\sffamily}
+% The trailing \par ends the paragraph while \titlefont's leading is still in
+% effect, so the gap applies to wrapped lines too (without it, wrapped title
+% lines revert to the document's normal leading).
+\newcommand{\titletext}[2]{{\titlefont\raggedright #1 \\ #2\par}}
 \newcommand{\authorfont}{\fontsize{10}{12}\selectfont\bfseries\sffamily}
 \newcommand{\affiliationfont}{\fontsize{10}{12}\selectfont\sffamily}
 \newcommand{\abstractheadingfont}{\fontsize{10}{12}\selectfont\bfseries\sffamily}
