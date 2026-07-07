@@ -83,18 +83,24 @@
 \AtBeginDocument{\rmfamily}
 
 % Font commands
-% ---- Title spacing --------------------------------------------------------
-% Title is 20pt bold sans with a 28pt base line height (\titlebaseleading).
-% \titlelinegap is the EXTRA space added AFTER EVERY line of the title —
-% including the lines that automatic word-wrap creates, not just the break
-% between the two \titletext arguments. Adjust these two values to taste:
-%   - \titlelinegap      : extra breathing room after each line (0pt = none)
-%   - \titlebaseleading  : base baseline-to-baseline height for the 20pt title
+% ---- Title size & spacing -------------------------------------------------
+% The title is bold sans. Three knobs below control its size and spacing —
+% change the \setlength values, not the \titlefont line:
+%   - \titlefontsize     : title point size (default 20pt). To make the title
+%                          bigger/smaller, change this. If you change it a lot,
+%                          also bump \titlebaseleading to ~1.3-1.4x the new size
+%                          so lines do not overlap or look cramped.
+%   - \titlebaseleading  : base baseline-to-baseline height for the title
+%   - \titlelinegap      : EXTRA space added AFTER EVERY line of the title,
+%                          including lines created by automatic word-wrap (not
+%                          just the break between the two \titletext arguments).
+%                          Set to 0pt for tight, single-spaced leading.
 % Effective leading = \titlebaseleading + \titlelinegap, applied to all lines.
-\newlength{\titlelinegap}     \setlength{\titlelinegap}{0.1in}
+\newlength{\titlefontsize}    \setlength{\titlefontsize}{20pt}
 \newlength{\titlebaseleading} \setlength{\titlebaseleading}{28pt}
+\newlength{\titlelinegap}     \setlength{\titlelinegap}{0.1in}
 \newcommand{\titlefont}{%
-  \fontsize{20}{\dimexpr \titlebaseleading + \titlelinegap\relax}%
+  \fontsize{\titlefontsize}{\dimexpr \titlebaseleading + \titlelinegap\relax}%
   \selectfont\bfseries\sffamily}
 % The trailing \par ends the paragraph while \titlefont's leading is still in
 % effect, so the gap applies to wrapped lines too (without it, wrapped title
